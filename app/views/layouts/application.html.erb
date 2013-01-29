@@ -16,6 +16,12 @@
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "LeaderBoard", fame_path %></li>
             <li><%= link_to "Admin", admin_path %></li>
+            <% if user_signed_in? %>
+            <li><%= link_to "SignOut", destroy_user_session_path,
+            :method => :delete %></li>
+            <% else %>
+            <li><%= link_to "Signin", user_session_path %></li>
+            <% end %>
           </ul>
         </nav>
       </div>
@@ -38,6 +44,8 @@
         </ul>
       </nav>
     </footer>
+
+    <%= debug(params) if Rails.env.development? %>
   </div>
 
 </body>

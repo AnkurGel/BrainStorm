@@ -1,4 +1,6 @@
 Brainstorm::Application.routes.draw do
+  devise_for :users
+
   root to: 'default_pages#home'
   match '/leaderboard', to: 'default_pages#fame', :as => 'fame'
   match '/admin', to: 'default_pages#admin'

@@ -1,5 +1,9 @@
 @import "bootstrap";
-
+@mixin box_sizing{
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 html {
   overflow-y: scroll;
 }
@@ -84,3 +88,30 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+.debug_dump {
+  clear: both;
+  margin-top: 45px;
+  float: left;
+  width: 100%;
+  @include box-sizing;
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  @include box-sizing;
+}
+input {
+  height: auto !important;
+}
+#error_explanation ul {
+  color: #f00;
+  list-style: square;
+}
+.float-right {
+  float: right;
+}
+  
