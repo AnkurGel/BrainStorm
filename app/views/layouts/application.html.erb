@@ -15,7 +15,9 @@
           <ul class = "nav pull-right">
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "LeaderBoard", fame_path %></li>
+            <% if current_user and current_user.admin? %>
             <li><%= link_to "Admin", admin_path %></li>
+            <% end %>
             <% if user_signed_in? %>
             <li><%= link_to "SignOut", destroy_user_session_path,
             :method => :delete %></li>

@@ -17,6 +17,8 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
     <%= f.password_field :current_password %>
 
+    <%= f.label :college_name %>
+    <%= f.text_field :college %>
     <%= f.submit "Update", :class => "btn btn-large btn-success " %>
     <% end %>
 
