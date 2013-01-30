@@ -28,6 +28,12 @@
     </div>
   </header>
   <div class="container">
+    <% unless user_signed_in? %>
+    <%= link_to "Sign in with facebook",
+    user_omniauth_authorize_path(:facebook) %>
+    <% else %>
+    <%= current_user.email %>
+    <% end %>
     <% flash.each do |key, value| %>
     <div class="alert alert-<%=key%>"><%= value %></div>
     <% end %>

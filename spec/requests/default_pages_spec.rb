@@ -7,6 +7,8 @@ describe "DefaultPages" do
     it { should have_selector('h1', :text => "BrainStorm") }
     it { should have_selector('title', :text => "BrainStorm") }
     it { should_not have_selector('title', :text => "Home") }
+    it { should have_link("Admin", :href => admin_path) }
+    it { should have_link("Signin", :href => new_user_session_path) }
   end
 
   describe "Admin Page" do
