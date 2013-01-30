@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
                   :uid, :college
 
   # attr_accessible :title, :body
-
+  validates :college, :length => { :maximum => 40 }
   def self.find_or_create(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     college_name = auth.extra.raw_info.education.last.school.name ? auth.extra.raw_info.education.last.school.name : ""

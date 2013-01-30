@@ -14,6 +14,6 @@ class DefaultPagesController < ApplicationController
 
   private
   def admin_user
-    redirect_to root_path, notice: "Sign in with sudo powers, honey" unless current_user.admin?
+    redirect_to root_path, notice: "Sign in with sudo powers, honey" unless current_user and current_user.admin?
   end
 end
