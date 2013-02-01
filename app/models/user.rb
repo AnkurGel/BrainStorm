@@ -8,10 +8,13 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider,
-                  :uid, :college
+                  :uid, :college, :name, :image
 
   # attr_accessible :title, :body
-  validates :college, :length => { :maximum => 40 }
+  validates :name, :presence => true , :length => { :maximum => 25 },
+    :format => { :with => /^[A-Za-z ]+$/, :message => ": Err.. Your name should only contain alphabets, dear."}
+  validates :college, :length => { :maximum => 60 }
+
   def self.find_or_create(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     college_name = auth.extra.raw_info.education.last.school.name ? auth.extra.raw_info.education.last.school.name : ""
@@ -19,8 +22,10 @@ class User < ActiveRecord::Base
       user = User.create(provider:auth.provider,
                          uid:auth.uid,
                          email:auth.info.email,
+                         name: auth.info.name,
                          password:Devise.friendly_token[0,20],
-                         college:college_name
+                         college:college_name,
+                         :image => auth.info.image
                          )
     end
     user
@@ -28,6 +33,6 @@ class User < ActiveRecord::Base
 
   private
   def allot_score
-    self.score = 0
+    self.score = 1
   end
 end

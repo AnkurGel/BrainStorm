@@ -7,6 +7,7 @@ class DefaultPagesController < ApplicationController
   end
 
   def admin
+    @level = Level.new
   end
 
   def contact
@@ -14,6 +15,6 @@ class DefaultPagesController < ApplicationController
 
   private
   def admin_user
-    redirect_to root_path, notice: "Sign in with sudo powers, honey" unless current_user and current_user.admin?
+    redirect_to root_path, notice: "sudo says: YOU SHALL NOT PASS!" unless current_user and current_user.admin?
   end
 end

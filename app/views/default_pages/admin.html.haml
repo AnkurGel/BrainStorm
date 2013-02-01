@@ -1,3 +1,28 @@
 -provide(:title, "Admin Panel")
 %h1 Admin Panel
-%p Find me in app/views/default_pages/admin.html.haml
+.row
+  %aside.span3
+    %section
+      %h3
+        =current_user.name
+    %section    
+      -Level.all.each do |level|
+        %h3.questions_list
+          ="Level #{level.id}"
+  .span8
+    %section
+      %h2{ :style => "float: left;" }
+        Add Question
+        ="#{Level.count + 1}"
+      %div.span7
+        = form_for @level do |f|
+          =render 'partial/error_messages', :object => f.object
+
+          =f.label :question
+          =f.text_field :question
+
+          =f.label :answer
+          =f.text_field :answer
+
+          =f.submit "Create", :class => "btn btn-large btn-primary"
+    

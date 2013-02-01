@@ -4,6 +4,7 @@ Brainstorm::Application.routes.draw do
     get '/register', :to => "devise/registrations#new"
   end
 
+  resources :levels, :only => [:create, :show, :update, :destroy]
   root to: 'default_pages#home'
   match '/leaderboard', to: 'default_pages#fame', :as => 'fame'
   match '/admin', to: 'default_pages#admin'

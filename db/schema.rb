@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130123848) do
+ActiveRecord::Schema.define(:version => 20130201151131) do
+
+  create_table "levels", :force => true do |t|
+    t.string   "question"
+    t.string   "answer"
+    t.integer  "prev_id"
+    t.integer  "next_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -31,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20130130123848) do
     t.boolean  "admin",                  :default => false
     t.string   "college"
     t.integer  "score"
+    t.string   "name"
+    t.string   "image"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
