@@ -12,17 +12,17 @@
       <div class="container">
         <%= link_to "BrainStorm", root_path, id: 'logo' %>
         <nav>
-          <ul class = "nav pull-right">
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "LeaderBoard", fame_path %></li>
+          <ul class = "nav nav-pills pull-right">
+            <li class="<%= 'active' if params['action'].eql?('home') %>"><%= link_to "Home", root_path %></li>
+            <li class="<%= alert_active('action','fame') %>"><%= link_to "LeaderBoard", fame_path %></li>
             <% if current_user and current_user.admin? %>
-            <li><%= link_to "Admin", admin_path %></li>
+            <li class="<%= alert_active('action','admin') %>"><%= link_to "Admin", admin_path %></li>
             <% end %>
             <% if user_signed_in? %>
             <li><%= link_to "SignOut", destroy_user_session_path,
             :method => :delete %></li>
             <% else %>
-            <li><%= link_to "Signin", user_session_path %></li>
+            <li class="<%= alert_active('action','new') %>"><%= link_to "Signin", user_session_path %></li>
             <% end %>
           </ul>
         </nav>
@@ -37,7 +37,9 @@
     <%= current_user.email %>
     <% end %>
     <% flash.each do |key, value| %>
-    <div class="alert alert-<%=key%>"><%= value %></div>
+    <div class="alert alert-<%=key%>">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= value %></div>
     <% end %>
     <%= yield %>
     <footer class="footer">

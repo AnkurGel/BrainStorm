@@ -4,6 +4,12 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+@mixin two_color_linear_gradient($direction, $color1, $color2){
+  background-image: -moz-linear-gradient($direction, $color2, $color1);
+  background-image: -webkit-linear-gradient($direction, $color2, $color1);
+  background-image: -o-linear-gradient($direction, $color2, $color1);
+  background-image: linear-gradient(to $direction, $color1, $color2);
+}
 html {
   overflow-y: scroll;
 }
@@ -18,6 +24,12 @@ textarea {
   resize: vertical;
 }
 
+.navbar-inner {
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.18)), url("http://www.picgifs.com/wallpapers/movie-and-tv-shows/lord-of-the-rings/animaatjes-lord-of-the-rings-73676.jpg");
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.18)), url("http://www.picgifs.com/wallpapers/movie-and-tv-shows/lord-of-the-rings/animaatjes-lord-of-the-rings-73676.jpg");
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.18)), url("http://www.picgifs.com/wallpapers/movie-and-tv-shows/lord-of-the-rings/animaatjes-lord-of-the-rings-73676.jpg");
+  background-position: 10% 1%;
+}
 #logo {
   float: left;
   padding-top: 9px;
@@ -35,7 +47,12 @@ textarea {
     transition-timing-function: ease;
   }
 }
-
+.navbar .nav > li > a {
+  color: #fff;
+  &:hover {
+    color: #e3e3e3;
+  }
+}
 footer {
   margin-top: 45px;
   padding-top: 5px;
@@ -120,4 +137,20 @@ input {
   text-align: center;
   padding-top: 4px;
   
+}
+a.add_fields {
+  display: block;
+}
+.profile_image {
+  border-radius: 4px;
+}
+
+.row > .span3 section:nth-child(2) {
+  @include two_color_linear_gradient(right, #fff, #e6e6e6);
+}
+
+.links_bar {
+  display: block;
+  text-align: center;
+  display: none;
 }

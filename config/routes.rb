@@ -9,6 +9,7 @@ Brainstorm::Application.routes.draw do
   match '/leaderboard', to: 'default_pages#fame', :as => 'fame'
   match '/admin', to: 'default_pages#admin'
   match '/contact', to: 'default_pages#contact'
+  match '/levels/:id/edit', to: 'default_pages#edit_question', :as => 'edit_level'
 
 
   # The priority is based upon order of creation:

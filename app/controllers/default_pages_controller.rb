@@ -1,5 +1,5 @@
 class DefaultPagesController < ApplicationController
-  before_filter :admin_user, :only => [:admin]
+  before_filter :admin_user, :only => [:admin, :edit_question]
   def home
   end
 
@@ -11,6 +11,10 @@ class DefaultPagesController < ApplicationController
   end
 
   def contact
+  end
+
+  def edit_question
+    @level = Level.find(params[:id])
   end
 
   private

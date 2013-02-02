@@ -8,6 +8,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'debugger'
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
