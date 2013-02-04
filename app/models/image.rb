@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  attr_accessible :image, :level_id
+  attr_accessible :image, :level_id, :image_cache
 
   mount_uploader :image, ImageUploader
   belongs_to :level

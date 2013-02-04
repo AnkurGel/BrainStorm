@@ -22,7 +22,8 @@
             <li><%= link_to "SignOut", destroy_user_session_path,
             :method => :delete %></li>
             <% else %>
-            <li class="<%= alert_active('action','new') %>"><%= link_to "Signin", user_session_path %></li>
+            <li class="<%= alert_active('controller','devise/sessions') %>"><%= link_to "Signin", user_session_path %></li>
+            <li class="<%= alert_active('controller','devise/registrations') %>"><%= link_to "Register", register_path %></li>
             <% end %>
           </ul>
         </nav>

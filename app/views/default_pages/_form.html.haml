@@ -1,5 +1,5 @@
 %h2{ :style => "float: left;" }
-  =(@level.new?) ? "Add Level #{Level.count + 1}" : "Editing Level #{@level.id}"
+  =(@level.new?) ? "Add Level #{(Level.last.id || 0) + 1}" : "Editing Level #{@level.id}"
 %div.span7
   = form_for @level, :html => { :multipart => true } do |f|
     =render 'partial/error_messages', :object => f.object
@@ -13,6 +13,7 @@
     =f.fields_for :images do |builder|
       = render 'default_pages/image_fields', :f => builder
     =link_to_add_fields "Add Image", f, :images
+    %br
 
     =f.submit "Submit", :class => "btn btn-large btn-primary"
     

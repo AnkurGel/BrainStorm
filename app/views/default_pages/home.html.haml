@@ -3,3 +3,6 @@
 
   %h2
     This is for Avensis fest
+  - if current_user  
+    %h3#play
+      =link_to "PLAY", play_path

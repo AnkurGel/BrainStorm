@@ -1,7 +1,7 @@
 class Level < ActiveRecord::Base
   attr_accessible :answer, :next_id, :prev_id, :question, :images_attributes
 
-  validates :question, :presence => true, :uniqueness => true
+  validates :question, :presence => true
   validates :answer, :presence => true, :length => { :maximum => 20 }
 
   has_many :images, :dependent => :destroy

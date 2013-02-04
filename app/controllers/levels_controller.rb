@@ -1,12 +1,16 @@
 class LevelsController < ApplicationController
   before_filter :admin_user, :only => [:create, :edit, :update, :destroy]
-  before_filter :registered_user, :only => [:show]
+  before_filter :registered_user, :only => [:show, :play]
 
   def show
     @level = Level.find(params[:id])
     redirect_to @level, :notice => "LOLOLOL" if params[:redirect_to_correct_location]
   end
 
+  def play
+    redirect_to level_path(current_user.score)
+  end
+  
   def create
     @level = Level.set(params[:level]) # data massaging
     @level_last = Level.last

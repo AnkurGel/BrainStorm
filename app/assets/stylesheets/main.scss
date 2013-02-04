@@ -1,15 +1,27 @@
 @import "bootstrap";
-@mixin box_sizing{
+@mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-@mixin two_color_linear_gradient($direction, $color1, $color2){
+@mixin two_color_linear_gradient($direction, $color1, $color2) {
   background-image: -moz-linear-gradient($direction, $color2, $color1);
   background-image: -webkit-linear-gradient($direction, $color2, $color1);
   background-image: -o-linear-gradient($direction, $color2, $color1);
   background-image: linear-gradient(to $direction, $color1, $color2);
 }
+@mixin bg_linear_gradient($value, $url) {
+  background-image: -moz-linear-gradient($value), url($url);
+  background-image: -webkit-linear-gradient($value), url($url);
+  background-image: -o-linear-gradient($value), url($url);
+}
+@mixin transition_mixin($property, $duration, $function, $delay) {
+  -moz-transition: $property $duration $function $delay;
+  -webkit-transition: $property $duration $function $delay;
+  -o-transition: $property $duration $function $delay;
+  transition: $property $duration $function $delay;
+}
+
 html {
   overflow-y: scroll;
 }
@@ -23,12 +35,15 @@ section {
 textarea {
   resize: vertical;
 }
-
+/* .container, .navbar-inner .container { */
+/*   width: 1170px; */
+/* } */
 .navbar-inner {
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.18)), url("http://www.picgifs.com/wallpapers/movie-and-tv-shows/lord-of-the-rings/animaatjes-lord-of-the-rings-73676.jpg");
-    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.18)), url("http://www.picgifs.com/wallpapers/movie-and-tv-shows/lord-of-the-rings/animaatjes-lord-of-the-rings-73676.jpg");
-    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.18)), url("http://www.picgifs.com/wallpapers/movie-and-tv-shows/lord-of-the-rings/animaatjes-lord-of-the-rings-73676.jpg");
+  @include bg_linear_gradient((top, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.18)), "background.jpg"); 
   background-position: 10% 1%;
+}
+.navbar .nav.pull-right {
+  height: 20px;
 }
 #logo {
   float: left;
@@ -47,10 +62,15 @@ textarea {
     transition-timing-function: ease;
   }
 }
+
 .navbar .nav > li > a {
   color: #fff;
+  border-bottom: solid 3px #000;
+  @include transition_mixin(all, 0.8s, ease, 0s);
   &:hover {
     color: #e3e3e3;
+    border-bottom: solid 3px #DA2400;
+    @include transition_mixin(all, 0.8s, ease, 0s);
   }
 }
 footer {
@@ -75,7 +95,7 @@ footer {
     }
   }
 }
-  
+
 .center {
   text-align: center;
 }
@@ -139,7 +159,7 @@ input {
   
 }
 a.add_fields {
-  display: block;
+  //  display: block;
 }
 .profile_image {
   border-radius: 4px;
@@ -153,4 +173,41 @@ a.add_fields {
   display: block;
   text-align: center;
   display: none;
+}
+.active {
+  font-weight: bolder;
+}
+@media only screen and (max-width: 959px) {
+  #logo {
+    display: none;
+  }
+  .navbar {
+    .nav.pull-right {
+      float: left;
+      padding-left: 20px;
+    }
+  }
+  .container {
+    width: 100%;
+    .row {
+      .span3 {
+        width: 100%;
+      }
+    }
+  }
+}
+.align_left {
+  float: left;
+}
+h3#play a {
+  font-size: 32px;
+  @include transition_mixin(all, 0.5s, ease-out,0s);
+  &:hover{
+    color: #000;
+    border-bottom: dashed 3px #000;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 1px 0.2em green;//1px 1px 2px blue;
+    @include transition_mixin(all, 0.5s, ease-out,0s);
+    text-decoration: none;
+
+  }
 }

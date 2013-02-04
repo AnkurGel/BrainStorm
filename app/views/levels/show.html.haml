@@ -1,2 +1,6 @@
 %h1= "Level #{@level.id}"
 %h2= @level.question
+- if @level.images.any?
+  %div
+    - @level.images.each do |image|
+      =image_tag image.image_url
