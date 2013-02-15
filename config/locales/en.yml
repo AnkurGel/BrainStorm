@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    models:
+      attempt: Attempt
+    attributes:
+      attempt:
+        attempt: "A guess"
+      

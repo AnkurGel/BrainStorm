@@ -21,13 +21,14 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields", data: {:id => id, :fields => fields.gsub("\n", "")})
   end
 
-  def image_for(user)
+  def image_for(user, with_class = "")
     if user.image
       image_url = user.image
     else
       g_id      = Digest::MD5::hexdigest(user.email.downcase)
       image_url = "https://secure.gravatar.com/avatar/#{g_id}"
     end
-    image_tag(image_url, :alt => "Image", :class => 'profile_image img-polaroid')
+    image_tag(image_url, :alt => "Image",
+              :class => "profile_image img-polaroid #{with_class}")
   end
 end

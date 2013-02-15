@@ -1,63 +1,74 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= insert_title(yield(:title)) %></title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-      <div class="container">
-        <%= link_to "BrainStorm", root_path, id: 'logo' %>
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Quintessential|Freckle+Face' rel='stylesheet' type='text/css'>
+    <title><%= insert_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "BrainStorm", root_path, id: 'logo' %>
+          <nav>
+            <ul class = "nav nav-pills pull-right">
+              <li class="<%= 'active' if params['action'].eql?('home') %>"><%= link_to "Home", root_path %></li>
+              <li class="<%= alert_active('action','fame') %>"><%= link_to "LeaderBoard", fame_path %></li>
+              <% if current_user and current_user.admin? %>
+              <li class="<%= alert_active('action','admin') %>"><%= link_to "Admin", admin_path %></li>
+              <% end %>
+              <% if user_signed_in? %>
+              <li><%= link_to "SignOut", destroy_user_session_path,
+                      :method => :delete %></li>
+              <% else %>
+              <li class="<%= alert_active('controller','devise/sessions') %>"><%= link_to "Signin", user_session_path %></li>
+              <li class="<%= alert_active('controller','devise/registrations') %>"><%= link_to "Register", register_path %></li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <% unless user_signed_in? %>
+      <%= link_to "Sign in with facebook",
+          user_omniauth_authorize_path(:facebook) %>
+      <% else %>
+      <%= current_user.email %>
+      <% if current_user.provider and current_user.provider.eql?('facebook') %>
+      <%= image_for(current_user, "float-right") %>
+      <% else %>
+      <div class="display-image">
+        <%= image_for(current_user, "float-right") %>
+        <br/>
+        <span class="toggle-link"><a href="http://gravatar.com/emails" target="blank">Change image</a></span>
+      </div>
+      <% end %>
+      
+      <% end %>
+      <% flash.each do |key, value| %>
+      <div class="alert alert-<%=key%>">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= value %></div>
+      <% end %>
+      <%= yield %>
+      <footer class="footer">
+        <small>
+          Developed by <a href="#">Ankur Goel</a>
+        </small>
         <nav>
-          <ul class = "nav nav-pills pull-right">
-            <li class="<%= 'active' if params['action'].eql?('home') %>"><%= link_to "Home", root_path %></li>
-            <li class="<%= alert_active('action','fame') %>"><%= link_to "LeaderBoard", fame_path %></li>
-            <% if current_user and current_user.admin? %>
-            <li class="<%= alert_active('action','admin') %>"><%= link_to "Admin", admin_path %></li>
-            <% end %>
-            <% if user_signed_in? %>
-            <li><%= link_to "SignOut", destroy_user_session_path,
-            :method => :delete %></li>
-            <% else %>
-            <li class="<%= alert_active('controller','devise/sessions') %>"><%= link_to "Signin", user_session_path %></li>
-            <li class="<%= alert_active('controller','devise/registrations') %>"><%= link_to "Register", register_path %></li>
-            <% end %>
+          <ul>
+            <li><a href="#">Avensis 2013</a></li>
+            <li><a href="#">Team</a></li>
+            <li><%= link_to "Contact", contact_path %></li>
           </ul>
         </nav>
-      </div>
+      </footer>
+
+      <%= debug(params) if Rails.env.development? %>
     </div>
-  </header>
-  <div class="container">
-    <% unless user_signed_in? %>
-    <%= link_to "Sign in with facebook",
-    user_omniauth_authorize_path(:facebook) %>
-    <% else %>
-    <%= current_user.email %>
-    <% end %>
-    <% flash.each do |key, value| %>
-    <div class="alert alert-<%=key%>">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <%= value %></div>
-    <% end %>
-    <%= yield %>
-    <footer class="footer">
-      <small>
-        Developed by <a href="#">Ankur Goel</a>
-      </small>
-      <nav>
-        <ul>
-          <li><a href="#">Avensis 2013</a></li>
-          <li><a href="#">Team</a></li>
-          <li><%= link_to "Contact", contact_path %></li>
-        </ul>
-      </nav>
-    </footer>
 
-    <%= debug(params) if Rails.env.development? %>
-  </div>
-
-</body>
+  </body>
 </html>

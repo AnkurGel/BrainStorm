@@ -4,6 +4,7 @@ class DefaultPagesController < ApplicationController
   end
 
   def fame
+    @users = User.order('score DESC')
   end
 
   def admin

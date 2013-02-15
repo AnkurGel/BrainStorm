@@ -52,21 +52,21 @@ textarea {
   letter-spacing: -1px;
   font-weight: bold;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-family: 'Freckle Face', "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 2em;
   text-transform: uppercase;
-  transition-duration: 1s;
+  @include transition_mixin(all, 1s, linear, 0.5s);
   &:hover {
     text-decoration: none;
     color: #e3e3e3;
-    transition-duration: 1s;
-    transition-timing-function: ease;
+    @include transition_mixin(all, 1s, ease, 0s);
   }
 }
 
 .navbar .nav > li > a {
   color: #fff;
   border-bottom: solid 3px #000;
-  @include transition_mixin(all, 0.8s, ease, 0s);
+  @include transition_mixin(all, 2s, ease, 0s);
   &:hover {
     color: #e3e3e3;
     border-bottom: solid 3px #DA2400;
@@ -120,7 +120,13 @@ h2 {
   font-weight: normal;
   color: #999;
 }
-
+.center.hero-unit {
+  h1 {
+    font-family: 'Quintessential', "Helvetica Neue", Helvetica,Arial, sans-serif, cursive;
+    text-shadow: 4px 4px 4px #aaa;
+    color: #ffe;
+  }
+}
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -201,13 +207,53 @@ a.add_fields {
 }
 h3#play a {
   font-size: 32px;
-  @include transition_mixin(all, 0.5s, ease-out,0s);
-  &:hover{
-    color: #000;
-    border-bottom: dashed 3px #000;
-    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 1px 0.2em green;//1px 1px 2px blue;
-    @include transition_mixin(all, 0.5s, ease-out,0s);
-    text-decoration: none;
+  /* @include transition_mixin(all, 0.5s, ease-out,0s); */
+  /* &:hover{ */
+  /*   color: #000; */
+  /*   border-bottom: dashed 3px #000; */
+  /*   text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 1px 0.2em green;//1px 1px 2px blue; */
+  /*   @include transition_mixin(all, 0.5s, ease-out,0s); */
+  /*   text-decoration: none; */
 
+  /* } */
+  &:hover {
+    text-decoration: none;
+  }
+}
+input:-moz-placeholder {
+  color: #999;
+}
+input:-ms-input-placeholder {
+  color: #999;
+}
+input:-webkit-input-placeholder {
+  color: #999;
+}
+.red, .red:hover {
+  color: red;
+}
+#leaderboard {
+  width: 500px;
+  margin: 0px auto;
+  text-align: left;
+  padding: 15px;
+}
+.display-image {
+  float:right;
+  cursor: pointer;
+  img {
+    @include transition_mixin(all, 0.3s, ease-out, 0s);
+  }
+  .toggle-link {
+    display: none;
+  }
+}
+.display-image-toggle {
+  img {
+    opacity: 0.3;
+    @include transition_mixin(opacity, 0.3s, ease-out, 0s);
+  }
+  .toggle-link {
+    display: block;
   }
 }

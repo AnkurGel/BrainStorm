@@ -1,6 +1,24 @@
-%h1= "Level #{@level.id}"
-%h2= @level.question
+-provide(:title, "#{@level.question}")
+%div.center
+  %h1= "Level #{@level.id}"
+  %h2= @level.question
+
+
 - if @level.images.any?
-  %div
+  .row
     - @level.images.each do |image|
-      =image_tag image.image_url
+      .span3.offset2
+        =image_tag image.image_url
+
+.row
+  .span6.offset3
+    =form_for @attempt do |f|
+      = render 'partial/error_messages', :object => f.object
+      = f.text_field :attempt, :placeholder => "Your answer goes here.."
+
+      =f.submit "Answer", :class => "btn btn-large btn-primary"
+    -if @attempts and @attempts.any?
+      ="#{pluralize(@attempts.count, "attempt")} so far:"
+      %ul
+        -@attempts.count.times do |n|
+          %li=@attempts[n].attempt

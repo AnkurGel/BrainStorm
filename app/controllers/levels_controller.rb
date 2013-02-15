@@ -4,13 +4,15 @@ class LevelsController < ApplicationController
 
   def show
     @level = Level.find(params[:id])
+    @attempt = current_user.attempts.build
+    @attempts = Attempt.find_all_by_user_id_and_level_id(current_user.id, @level.id)
     redirect_to @level, :notice => "LOLOLOL" if params[:redirect_to_correct_location]
   end
 
   def play
     redirect_to level_path(current_user.score)
   end
-  
+
   def create
     @level = Level.set(params[:level]) # data massaging
     @level_last = Level.last

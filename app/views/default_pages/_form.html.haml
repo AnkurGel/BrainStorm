@@ -1,5 +1,5 @@
 %h2{ :style => "float: left;" }
-  =(@level.new?) ? "Add Level #{(Level.last.id || 0) + 1}" : "Editing Level #{@level.id}"
+  =(@level.new_record?) ? "Add Level #{current_level + 1}" : "Editing Level #{@level.id}"
 %div.span7
   = form_for @level, :html => { :multipart => true } do |f|
     =render 'partial/error_messages', :object => f.object
@@ -16,5 +16,3 @@
     %br
 
     =f.submit "Submit", :class => "btn btn-large btn-primary"
-    
-    

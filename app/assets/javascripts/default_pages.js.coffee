@@ -15,3 +15,8 @@ jQuery ->
 
   $(".links_hover").on 'click', (event) ->
     $(this).parent().next().toggle('fast')
+    $(this).toggleClass('red')
+
+  $(".display-image").on 'click', (even) ->
+    $(this).toggleClass('display-image-toggle')
+    

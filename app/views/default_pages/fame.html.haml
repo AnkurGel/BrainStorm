@@ -1,3 +1,16 @@
 -provide(:title, "LeaderBoard")
 %h1 LeaderBoard
-%p Find me in app/views/default_pages/fame.html.haml
+.row
+  .span10.offset1
+    %table.table.table-striped
+      %thead
+        %th User
+        %th Name
+        %th College
+        %th #Score
+      -@users.each do |user|
+        %tr
+          %td= user.email
+          %td= user.name
+          %td= user.college
+          %td= user.score - 1
