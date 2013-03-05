@@ -1,11 +1,13 @@
 Brainstorm::Application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" } do
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" } do
     get '/login', :to => "devise/sessions#new"
     get '/register', :to => "devise/registrations#new"
   end
 
   resources :levels, :only => [:create, :show, :update, :destroy]
   resources :attempts, :only => [:create]
+  resources :colleges, :only => [:create]
+
   root to: 'default_pages#home'
   match '/leaderboard', :to => 'default_pages#fame', :as => 'fame'
   match '/admin',       :to => 'default_pages#admin'

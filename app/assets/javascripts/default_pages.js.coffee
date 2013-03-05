@@ -18,5 +18,30 @@ jQuery ->
     $(this).toggleClass('red')
 
   $(".display-image").on 'click', (even) ->
-    $(this).toggleClass('display-image-toggle')
+    $(@).toggleClass 'display-image-toggle'
+
+  $(".icon-info-sign").on 'click', (event) ->
+    $('.hint').fadeToggle()
     
+  map = {}
+  selectedItem = ""
+  $("#user_college_id").typeahead
+    source: (query, process) ->
+      data = colleges
+      list = []
+      map = {}
+
+      $.each colleges, (i, collg) ->
+        map[collg.name] = collg
+        list.push(collg.name)
+      process(list)
+      list
+
+    updater: (item) ->
+      selectedItem = map[item].id
+      item
+
+   $("input[value='Sign Up']").on 'click', (event) ->
+     $("#user_college_id").val(selectedItem)
+   $("input[value='Update']").on 'click', (event) ->
+     $("#user_college_id").val(selectedItem)

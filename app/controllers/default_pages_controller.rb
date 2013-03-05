@@ -9,6 +9,7 @@ class DefaultPagesController < ApplicationController
 
   def admin
     @level = Level.new
+    @college = College.new
   end
 
   def contact

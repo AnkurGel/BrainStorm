@@ -1,3 +1,4 @@
+<%= javascript_tag "var colleges = #{College.select('id, name').to_json }" %>
 <% provide(:title, "User Registration") %>
 <h1>Sign up</h1>
 <div class="row">
@@ -17,7 +18,8 @@
     <%= f.password_field :password_confirmation %>
 
     <%= f.label :college_name %>
-    <%= f.text_field :college %>
+    <%= f.text_field :college_id, :data => {:provide => "typeahead",
+    :menu => "#menu_list"}, :autocomplete => "off" %>
     <%= f.submit "Sign Up", :class => "btn btn-large btn-primary" %>
     <% end %>
 

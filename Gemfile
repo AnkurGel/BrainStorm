@@ -39,5 +39,7 @@ group :test do
   gem 'rb-inotify', '0.8.8'
   gem 'libnotify', '0.5.9'
   gem 'factory_girl_rails', '1.4.0'
+#  gem 'simplecov', :require => false
+#  gem 'simplecov-rcov', :require => false
 end
 

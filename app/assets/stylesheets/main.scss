@@ -123,7 +123,7 @@ h2 {
 .center.hero-unit {
   h1 {
     font-family: 'Quintessential', "Helvetica Neue", Helvetica,Arial, sans-serif, cursive;
-    text-shadow: 4px 4px 4px #aaa;
+    text-shadow: 5px 6px 3px #aaa;
     color: #ffe;
   }
 }
@@ -146,6 +146,18 @@ input, textarea, select, .uneditable-input {
   padding: 10px;
   margin-bottom: 15px;
   @include box-sizing;
+}
+#attempt_attempt {
+  width: 85%;
+}
+.icon-info-sign {
+  cursor: pointer;
+}
+.hint {
+  display: none;
+}
+input[value="Answer"] {
+  margin-left: 32%;
 }
 input {
   height: auto !important;
@@ -256,4 +268,14 @@ input:-webkit-input-placeholder {
   .toggle-link {
     display: block;
   }
+}
+/* .frame { */
+/*   border-width: 62px; */
+/*   border-image: url('frame.png') 62 stretch; */
+/*   padding: 30px; */
+/*   border-collapse: inherit; */
+/* } */
+.frame {
+  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.7);
+  border-bottom-right-radius: 20px;
 }

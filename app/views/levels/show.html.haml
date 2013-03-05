@@ -16,6 +16,9 @@
       = render 'partial/error_messages', :object => f.object
       = f.text_field :attempt, :placeholder => "Your answer goes here.."
 
+      - if @level.hint and !@level.hint.empty?
+        %i{ :class => "icon-info-sign" }
+        .hint=@level.hint
       =f.submit "Answer", :class => "btn btn-large btn-primary"
     -if @attempts and @attempts.any?
       ="#{pluralize(@attempts.count, "attempt")} so far:"

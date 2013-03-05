@@ -2,7 +2,7 @@
 %h1 LeaderBoard
 .row
   .span10.offset1
-    %table.table.table-striped
+    %table.table.table-striped.frame
       %thead
         %th User
         %th Name
@@ -12,5 +12,23 @@
         %tr
           %td= user.email
           %td= user.name
-          %td= user.college
+          %td= user.college.name if user.college
+          %td= user.score - 1
+      -@users.each do |user|
+        %tr
+          %td= user.email
+          %td= user.name
+          %td= user.college.name if user.college
+          %td= user.score - 1
+      -@users.each do |user|
+        %tr
+          %td= user.email
+          %td= user.name
+          %td= user.college.name if user.college
+          %td= user.score - 1
+      -@users.each do |user|
+        %tr
+          %td= user.email
+          %td= user.name
+          %td= user.college.name if user.college
           %td= user.score - 1

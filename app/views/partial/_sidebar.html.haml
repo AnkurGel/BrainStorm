@@ -10,6 +10,6 @@
       %small
         =link_to "Show", level
         |
-        =link_to "Edit", edit_level_path(level)
+        =link_to "Edit", edit_level_path(level), :remote => true
         |
         =link_to "Delete", level, :method => :delete, :data => { :confirm => "Are you sure?" }

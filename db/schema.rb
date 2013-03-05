@@ -11,12 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130204130353) do
+ActiveRecord::Schema.define(:version => 20130305064223) do
 
   create_table "attempts", :force => true do |t|
     t.string   "attempt"
     t.integer  "user_id"
     t.integer  "level_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "colleges", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -35,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20130204130353) do
     t.integer  "next_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "hint"
   end
 
   create_table "users", :force => true do |t|
@@ -53,10 +60,10 @@ ActiveRecord::Schema.define(:version => 20130204130353) do
     t.string   "provider"
     t.string   "uid"
     t.boolean  "admin",                  :default => false
-    t.string   "college"
     t.integer  "score"
     t.string   "name"
     t.string   "image"
+    t.integer  "college_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

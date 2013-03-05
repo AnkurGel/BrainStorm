@@ -1,18 +1,21 @@
 %h2{ :style => "float: left;" }
-  =(@level.new_record?) ? "Add Level #{current_level + 1}" : "Editing Level #{@level.id}"
+  = (@level.new_record?) ? "Add Level #{current_level + 1}" : "Editing Level #{@level.id}"
 %div.span7
   = form_for @level, :html => { :multipart => true } do |f|
-    =render 'partial/error_messages', :object => f.object
+    = render 'partial/error_messages', :object => f.object
 
-    =f.label :question
-    =f.text_field :question
+    = f.label :question
+    = f.text_field :question
 
-    =f.label :answer
-    =f.text_field :answer
+    = f.label :answer
+    = f.text_field :answer
 
-    =f.fields_for :images do |builder|
+    = f.label :hint
+    = f.text_field :hint
+
+    = f.fields_for :images do |builder|
       = render 'default_pages/image_fields', :f => builder
-    =link_to_add_fields "Add Image", f, :images
+    = link_to_add_fields "Add Image", f, :images
     %br
 
-    =f.submit "Submit", :class => "btn btn-large btn-primary"
+    = f.submit "Submit", :class => "btn btn-large btn-primary"

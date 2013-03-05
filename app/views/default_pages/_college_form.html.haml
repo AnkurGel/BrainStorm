@@ -1,0 +1,7 @@
+%h2 Create College
+= form_for @college do |f|
+  = render 'partial/error_messages', :object => f.object
+
+  =f.label :college
+  =f.text_field :name
+  =f.submit "Create", :class => "btn"

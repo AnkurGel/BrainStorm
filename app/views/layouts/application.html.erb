@@ -20,6 +20,7 @@
               <li class="<%= alert_active('action','admin') %>"><%= link_to "Admin", admin_path %></li>
               <% end %>
               <% if user_signed_in? %>
+              <li><%= link_to "Play", play_path %></li>
               <li><%= link_to "SignOut", destroy_user_session_path,
                       :method => :delete %></li>
               <% else %>
@@ -43,8 +44,11 @@
       <div class="display-image">
         <%= image_for(current_user, "float-right") %>
         <br/>
-        <span class="toggle-link"><a href="http://gravatar.com/emails" target="blank">Change image</a></span>
+        <span class="toggle-link"><a href="http://gravatar.com/emails"
+        target="blank">Change image</a></span>
       </div>
+
+        
       <% end %>
       
       <% end %>
@@ -55,9 +59,7 @@
       <% end %>
       <%= yield %>
       <footer class="footer">
-        <small>
-          Developed by <a href="#">Ankur Goel</a>
-        </small>
+
         <nav>
           <ul>
             <li><a href="#">Avensis 2013</a></li>
