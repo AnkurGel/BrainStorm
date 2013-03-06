@@ -1,14 +1,13 @@
--provide(:title, "#{@level.question}")
+-provide(:title, "#{@level.title.empty? ? "Level #{@level.id}" : @level.title }")
 %div.center
   %h1= "Level #{@level.id}"
   %h2= @level.question
 
 
 - if @level.images.any?
-  .row
+  .row.level_image
     - @level.images.each do |image|
-      .span3.offset2
-        =image_tag image.image_url
+      =image_tag image.image_url, :alt => @level.alt
 
 .row
   .span6.offset3

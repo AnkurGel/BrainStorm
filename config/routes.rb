@@ -11,6 +11,7 @@ Brainstorm::Application.routes.draw do
   root to: 'default_pages#home'
   match '/leaderboard', :to => 'default_pages#fame', :as => 'fame'
   match '/admin',       :to => 'default_pages#admin'
+  match '/analytics',   :to => 'default_pages#analytics'
   match '/contact',     :to => 'default_pages#contact'
   match '/levels/:id/edit', :to => 'default_pages#edit_question', :as => 'edit_level'
   match '/play',        :to => 'levels#play', :as => 'play'

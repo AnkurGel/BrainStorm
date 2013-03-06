@@ -1,5 +1,5 @@
 class Level < ActiveRecord::Base
-  attr_accessible :answer, :next_id, :prev_id, :question, :images_attributes, :hint
+  attr_accessible :answer, :next_id, :prev_id, :question, :images_attributes, :hint, :alt, :title
   before_save :sterlize_answer
 
   validates :answer, :presence => true, :length => { :maximum => 20 }

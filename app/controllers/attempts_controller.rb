@@ -1,5 +1,5 @@
 class AttemptsController < ApplicationController
-
+  before_filter :game_playable?, :only => [:create]
   def create
     @attempt = current_user.attempts.build(params[:attempt])
     @attempt.level_id = current_level

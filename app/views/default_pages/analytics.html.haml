@@ -1,0 +1,12 @@
+-provide(:title, "Analytics Board")
+.hide_div_toggle Hide/Show Registration/Day chart
+=content_tag :div, "", id: "registration_chart", data: { registrations: @registrations }
+.hide_div_toggle Hide/Show colleges' scores and registrations chart
+=content_tag :div, "", id: "colleges_bar_chart", data: { colleges: @colleges }
+.hide_div_toggle Hide/Show colleges' participation% chart
+=content_tag :div, "", id: "colleges_donut", data: { colleges: donut_chart(@colleges) }
+.hide_div_toggle Hide/Show colleges' frequent sign-ins chart
+=content_tag :div, "", id: "colleges_signins"
+.hide_div_toggle Hide/Show Level vs Attempts chart
+=content_tag :div, "", id: "level_attempt_chart", data: { attempts: @level_attempts }
+

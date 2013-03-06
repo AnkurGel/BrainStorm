@@ -1,0 +1,15 @@
+.row
+  .span10.offset1
+    %table.table.table-striped.frame
+      %thead
+        %th User
+        %th Name
+        %th College
+        %th #Score
+      -@users.each do |user|
+        %tr
+          %td= user.email
+          %td= user.name
+          %td= user.college.name if user.college
+          %td= user.score - 1
+

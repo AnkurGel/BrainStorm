@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+  scope :with_rank, lambda { |rank| order('score DESC').offset(rank - 1).limit(1) }
   before_create :allot_score
   before_update :verify_college
   # And allot "Others" to college if blank or 0
@@ -47,6 +48,25 @@ class User < ActiveRecord::Base
   def verify_college
     if self.college.nil?
       self.college = College.find_by_name("Other") if College.find_by_name("Other")
+    end
+  end
+
+  def self.registration_data
+
+  end
+
+  def self.colleges_bar_chart_data
+    users = group('college_id').select('count(id) as id,
+                                       college_id,
+                                       MAX(score) as score,
+                                       SUM(sign_in_count) as signins').order('id DESC, score DESC,
+                                                                             signins DESC').limit(10)
+    users.map do |user|
+      { id: user.id,
+        college: if user.college then College.find(user.college_id).try(:name) end,
+        score: user.score,
+        signins: user.signins
+      }
     end
   end
 end

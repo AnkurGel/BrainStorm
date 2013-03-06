@@ -45,3 +45,41 @@ jQuery ->
      $("#user_college_id").val(selectedItem)
    $("input[value='Update']").on 'click', (event) ->
      $("#user_college_id").val(selectedItem)
+
+  Morris.Line
+    element: 'registration_chart'
+    data: $("#registration_chart").data('registrations')
+    xkey: 'created_at'
+    ykeys: ['total_ids']
+    labels: ['registrations']
+    
+  Morris.Bar
+    element: 'colleges_bar_chart'
+    data: $("#colleges_bar_chart").data('colleges')
+    xkey: 'college'
+    ykeys: ['id', 'score']
+    labels: ['Registrations', 'Max Score']
+    
+  Morris.Bar
+    element: 'colleges_signins'
+    data: $("#colleges_bar_chart").data('colleges')
+    xkey: 'college'
+    ykeys: ['signins']
+    labels: ['Total signins']
+    barColors: ['#4da74d']
+
+  Morris.Donut
+    element: 'colleges_donut'
+    data: $("#colleges_donut").data('colleges')
+    ###formatter: (y, d) -> y + '%'###
+
+  Morris.Bar
+    element: 'level_attempt_chart'
+    data: $("#level_attempt_chart").data('attempts')
+    xkey: 'level_id'
+    ykeys: ['top_user_attempts', 'second_user_attempts','total_attempts']
+    labels: ['Top User', 'Second User Attempts', 'Total attempts']
+    
+    
+  $('.hide_div_toggle').on 'click', (event) ->
+    $(this).next().fadeToggle()

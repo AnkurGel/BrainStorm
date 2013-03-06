@@ -13,6 +13,12 @@
     = f.label :hint
     = f.text_field :hint
 
+    = f.label :alt, "Hover text"
+    = f.text_field :alt
+
+    = f.label :title, "Optional title to be shown on that question's page"
+    = f.text_field :title
+    
     = f.fields_for :images do |builder|
       = render 'default_pages/image_fields', :f => builder
     = link_to_add_fields "Add Image", f, :images

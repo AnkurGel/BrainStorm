@@ -1,7 +1,7 @@
 class LevelsController < ApplicationController
   before_filter :admin_user, :only => [:create, :edit, :update, :destroy]
   before_filter :registered_user, :only => [:show, :play]
-
+  before_filter :game_playable?, :only => [:show, :play]
   def show
     @level = Level.find(params[:id])
     @attempt = current_user.attempts.build
@@ -74,4 +74,6 @@ class LevelsController < ApplicationController
       params[:id] = current_user.score
     end
   end
+
+
 end
