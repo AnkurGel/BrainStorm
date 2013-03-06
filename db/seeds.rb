@@ -8,5 +8,5 @@
 f = File.open("#{Rails.root}/db/colleges", 'rb')
 f.each_with_index do |line, index|
   puts "Creating #{index + 1}"
-  College.create!(:name => line.gsub(/\n/,''))
+  College.create(:name => line.gsub(/\n/,''))
 end
