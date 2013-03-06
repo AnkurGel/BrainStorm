@@ -6,8 +6,10 @@ class AttemptsController < ApplicationController
     @level = Level.find(current_level)
     if @attempt.save
       if sterlize(@attempt.attempt).eql? @level.answer
-        current_user.score = @level.next_id;
-        current_user.save
+        unless current_user.admin?
+          current_user.score = @level.next_id;
+          current_user.save
+        end
         redirect_to level_path(current_level), :success => "WIN WIN"
       else
         redirect_to level_path(current_level), :error => "NOOO"
