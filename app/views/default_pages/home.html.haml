@@ -1,8 +1,30 @@
-.center.hero-unit
-  %h1 BrainStorm
+.row
+  .center.head
+    %h1 BrainStorm
 
-  %h2
-    This is for Avensis fest
-  - if current_user  
-    %h3#play
-      =link_to "PLAY", play_path
+    %h2
+      14 - 21 March 2013
+    - if current_user  
+      %h3#play
+        =link_to "PLAY", play_path
+    %hr
+
+  .span7
+    %h2
+      What is it?
+    %p
+      BrainStorm is an online mind-boggling treasure hunt event to test your brain cells. 
+    %h2
+      How to play and compete?
+    %p
+      Simply sign up using facebook intantly or register here.
+  .span7
+    %h2
+      When?
+    %p
+      Go ahead and register now. BrainStorm will commence from
+      %b 14 March - 21 March
+    %h2
+      What's in it for me?
+    %p
+      Prizes worth $$ to win. Experience with intellectual nervebreaking problems.      

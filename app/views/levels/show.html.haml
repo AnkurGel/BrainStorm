@@ -7,10 +7,11 @@
 - if @level.images.any?
   .row.level_image
     - @level.images.each do |image|
-      =image_tag image.image_url, :alt => @level.alt
+      /=image_tag image.image_url, :alt => @level.alt
+      =image_tag image.image, :alt => @level.alt
 
 .row
-  .span6.offset3
+  .span8.offset4
     =form_for @attempt do |f|
       = render 'partial/error_messages', :object => f.object
       = f.text_field :attempt, :placeholder => "Your answer goes here.."

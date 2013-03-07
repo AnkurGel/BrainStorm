@@ -2,6 +2,7 @@ Brainstorm::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" } do
     get '/login', :to => "devise/sessions#new"
     get '/register', :to => "devise/registrations#new"
+    match '/destroy/:id',  :to => 'registrations#destroy', :via => :delete, :as => 'user_destroy'
   end
 
   resources :levels, :only => [:create, :show, :update, :destroy]
@@ -13,6 +14,7 @@ Brainstorm::Application.routes.draw do
   match '/admin',       :to => 'default_pages#admin'
   match '/analytics',   :to => 'default_pages#analytics'
   match '/contact',     :to => 'default_pages#contact'
+  match '/team',        :to => 'default_pages#team'
   match '/levels/:id/edit', :to => 'default_pages#edit_question', :as => 'edit_level'
   match '/play',        :to => 'levels#play', :as => 'play'
 

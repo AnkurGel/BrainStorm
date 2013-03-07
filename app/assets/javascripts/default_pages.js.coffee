@@ -2,15 +2,27 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
+  $.fn.add_image_fields = ->
+    $(this).on 'click', (event) -> 
+      time = new Date().getTime()
+      regexp = new RegExp($(this).data('id'), 'g')
+      $(this).before($(this).data('fields').replace(regexp, time))
+      event.preventDefault()
+    this
+  $('form .add_fields').add_image_fields()
+    
+  $.fn.remove_image_fields = ->
+    $(this).on 'click', (event) ->
+      $(this).prev('input[type=hidden]').val('1')
+      $(this).closest('fieldset').hide()
+      event.preventDefault()
+    this
+
+  $('form .remove_fields').remove_image_fields()
+  
   $('form').on 'click', '.remove_fields', (event) ->
     $(this).prev('input[type=hidden]').val('1')
     $(this).closest('fieldset').hide()
-    event.preventDefault()
-
-  $('form').on 'click', '.add_fields', (event) ->
-    time = new Date().getTime()
-    regexp = new RegExp($(this).data('id'), 'g')
-    $(this).before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
 
   $(".links_hover").on 'click', (event) ->
@@ -22,6 +34,9 @@ jQuery ->
 
   $(".icon-info-sign").on 'click', (event) ->
     $('.hint').fadeToggle()
+
+  $(".optional > span").on 'click', (event) ->
+    $(this).siblings().slideToggle()
     
   map = {}
   selectedItem = ""
@@ -77,8 +92,8 @@ jQuery ->
     element: 'level_attempt_chart'
     data: $("#level_attempt_chart").data('attempts')
     xkey: 'level_id'
-    ykeys: ['top_user_attempts', 'second_user_attempts', 'third_user_attempts', 'total_attempts']
-    labels: ['Top ranker attempts', "2nd ranker's attempts", "3rd ranker's attempts", 'Total attempts']
+    ykeys: ['top_user_attempts', 'second_user_attempts', 'third_user_attempts', 'current_user_attempts', 'total_attempts']
+    labels: ['Top ranker attempts', "2nd ranker's attempts", "3rd ranker's attempts", "Your attempts", 'Total attempts']
     
     
   $('.hide_div_toggle').on 'click', (event) ->

@@ -1,6 +1,7 @@
 %h2{ :style => "float: left;" }
   = (@level.new_record?) ? "Add Level #{current_level + 1}" : "Editing Level #{@level.id}"
-%div.span7
+%br
+%div.span9
   = form_for @level, :html => { :multipart => true } do |f|
     = render 'partial/error_messages', :object => f.object
 
@@ -10,15 +11,23 @@
     = f.label :answer
     = f.text_field :answer
 
-    = f.label :hint
-    = f.text_field :hint
+    .optional
+      %span Add/Edit hint
+      = f.label :hint
+      = f.text_field :hint
+    .optional
+      %span Add alt text for image 
+      = f.label :alt, "Hover text"
+      = f.text_field :alt
+    .optional
+      %span Add title to be shown on level page
+      = f.label :title, "Optional title to be shown on that question's page"
+      = f.text_field :title
 
-    = f.label :alt, "Hover text"
-    = f.text_field :alt
-
-    = f.label :title, "Optional title to be shown on that question's page"
-    = f.text_field :title
-    
+    .optional
+      %span Add link of Music file
+      = f.label :extra_content, "SoundCloud link"
+      = f.text_field :extra_content
     = f.fields_for :images do |builder|
       = render 'default_pages/image_fields', :f => builder
     = link_to_add_fields "Add Image", f, :images

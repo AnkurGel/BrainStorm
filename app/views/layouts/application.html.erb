@@ -39,7 +39,7 @@
       <%= link_to "Sign in with facebook",
           user_omniauth_authorize_path(:facebook) %>
       <% else %>
-      <%= current_user.email %>
+      <%= current_user.name %>
       <% if current_user.provider and current_user.provider.eql?('facebook') %>
       <%= image_for(current_user, "float-right") %>
       <% else %>
@@ -65,7 +65,7 @@
         <nav>
           <ul>
             <li><a href="#">Avensis 2013</a></li>
-            <li><a href="#">Team</a></li>
+            <li><%= link_to "Team", team_path %></li>
             <li><%= link_to "Contact", contact_path %></li>
           </ul>
         </nav>

@@ -1,7 +1,7 @@
 <% provide(:title, 'Sign in') %>
 <h1>Sign in</h1>
 <div class="row">
-  <div class="span6 offset3">
+  <div class="span7 offset4">
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <%= f.label :email %>
       <%= f.email_field :email %>

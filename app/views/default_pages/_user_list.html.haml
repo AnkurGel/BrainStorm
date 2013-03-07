@@ -1,15 +1,21 @@
 .row
-  .span10.offset1
+  .span11.offset2
     %table.table.table-striped.frame
       %thead
-        %th User
+        %th Position
+        - if current_user and current_user.admin?
+          %th User
         %th Name
         %th College
         %th #Score
-      -@users.each do |user|
+      -@users.each_with_index do |user, index|
         %tr
-          %td= user.email
+          %td= index + 1
+          - if current_user and current_user.admin?
+            %td= user.email
           %td= user.name
           %td= user.college.name if user.college
           %td= user.score - 1
-
+          -if current_user and current_user.admin?
+            %td=link_to "Kick", user_destroy_path(user), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => 'btn-primary btn-inverse btn-small'
+    = will_paginate @users

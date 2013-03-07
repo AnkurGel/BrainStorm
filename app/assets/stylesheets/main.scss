@@ -38,9 +38,12 @@ textarea {
 /* .container, .navbar-inner .container { */
 /*   width: 1170px; */
 /* } */
+.container { width: 1170px; }
+
 .navbar-inner {
   @include bg_linear_gradient((top, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.18)), "background.jpg"); 
   background-position: 10% 1%;
+  .container { width: 1170px !important; }
 }
 .navbar .nav.pull-right {
   height: 20px;
@@ -120,11 +123,28 @@ h2 {
   font-weight: normal;
   color: #999;
 }
-.center.hero-unit {
+.center.head {
   h1 {
     font-family: 'Quintessential', "Helvetica Neue", Helvetica,Arial, sans-serif, cursive;
-    text-shadow: 5px 6px 3px #aaa;
-    color: #ffe;
+    font-size: 6em;
+    text-shadow: 5px 6px 3px #7d5015;
+    color: #240e03;
+    color: #ECE9E8
+  }
+
+  ~ .span7 {
+    text-align: justify;
+    h2 {
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: bold;
+      text-align: left;
+      background-color: #eee;
+      -moz-border-radius: 6px;
+      border-radius: 6px;
+      padding: 7px;
+      background-image: url('background.jpg');
+      + p { margin-bottom: 30px; }
+    }
   }
 }
 p {
@@ -156,6 +176,15 @@ input, textarea, select, .uneditable-input {
 .hint {
   display: none;
 }
+.optional {
+  span { color: #0088CC; cursor: pointer; }
+  label, input {
+    display: none;
+  }
+  input {
+    width: 90%;
+  }
+}
 .row.level_image {
   text-align: center;
   margin-bottom: 20px;
@@ -180,15 +209,21 @@ input {
   padding-top: 4px;
   
 }
+.user_details {
+  display: none;
+}
 a.add_fields {
   //  display: block;
 }
 .profile_image {
   border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
 }
 
 .row > .span3 section:nth-child(2) {
   @include two_color_linear_gradient(right, #fff, #e6e6e6);
+  margin-bottom: 30px;
 }
 
 .links_bar {
@@ -199,6 +234,7 @@ a.add_fields {
 .active {
   font-weight: bolder;
 }
+
 @media only screen and (max-width: 959px) {
   #logo {
     display: none;
@@ -255,8 +291,8 @@ input:-webkit-input-placeholder {
   padding: 15px;
 }
 .display-image {
-  float:right;
   cursor: pointer;
+  float: right;
   img {
     @include transition_mixin(all, 0.3s, ease-out, 0s);
   }
@@ -288,4 +324,7 @@ input:-webkit-input-placeholder {
 .frame {
   box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.7);
   border-bottom-right-radius: 20px;
+}
+.pagination {
+  text-align: center;
 }

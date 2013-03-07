@@ -3,7 +3,7 @@
     =image_for(current_user)
     =current_user.name
 %section    
-  -Level.all.each do |level|
+  -Level.order('id').each do |level|
     %h3.questions_list
       =link_to "Level #{level.id}", "#", :class => "links_hover"
     %div.links_bar

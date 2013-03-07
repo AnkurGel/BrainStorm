@@ -1,9 +1,12 @@
 -provide(:title, "Admin Panel")
 %h1 Admin Panel
+.user_details
+  
 .row
   %aside.span3
     = render 'partial/sidebar'
     = render 'default_pages/college_form'
-  .span8
+  .span10
     %section
       = render 'default_pages/form'
+      

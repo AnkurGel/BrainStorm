@@ -1,2 +1,6 @@
-$('.span8 section').children().hide('slow');
-$('.span8 section').append("<%= j render 'default_pages/form' %>");
+$('.span10 section').children().hide('slow');
+$('.span10 section').append("<%= j render 'default_pages/form' %>");
+$(".optional > span").on('click', function(event){
+    $(this).siblings().slideToggle()
+    });
+$('form .add_fields').add_image_fields()
