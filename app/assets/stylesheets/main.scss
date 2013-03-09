@@ -21,6 +21,9 @@
   -o-transition: $property $duration $function $delay;
   transition: $property $duration $function $delay;
 }
+body {
+  background-color: lighten(#eee, 5%);
+}
 
 html {
   overflow-y: scroll;
@@ -327,4 +330,18 @@ input:-webkit-input-placeholder {
 }
 .pagination {
   text-align: center;
+}
+.clear {
+  clear: both;
+}
+.rules {
+  li {
+    margin: 5px;
+    padding: 3px;
+    font-size: 1.3em;
+    text-align: justify;
+    &:hover {
+      background-color: #eee;
+    }
+  }
 }

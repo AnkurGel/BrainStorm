@@ -1,6 +1,9 @@
 class DefaultPagesController < ApplicationController
   before_filter :admin_user, :only => [:admin, :analytics, :edit_question, :admin_user_list]
   def home
+    if Game.first and Game.first.is_playable? and user_signed_in?
+      @level_attempts = Attempt.level_attempt_chart_data(current_user)
+    end
   end
 
   def fame
@@ -18,6 +21,7 @@ class DefaultPagesController < ApplicationController
     @colleges = User.colleges_bar_chart_data
     @users = User.order('score DESC')
     @level_attempts = Attempt.level_attempt_chart_data(current_user)
+    @fb_non_fb_users = User.fb_non_fb_users_data
 
   end
 
@@ -29,6 +33,9 @@ class DefaultPagesController < ApplicationController
   end
 
   def team
+  end
+
+  def rules
   end
 
   private

@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider,
-                  :uid, :name, :image, :college_id
+                  :uid, :name, :image, :college_id, :link
 
   # attr_accessible :title, :body
   validates :name, :presence => true , :length => { :maximum => 25 },
@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
   def self.find_or_create(auth, signed_in_resource=nil)
     new_record = false
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    college_name = auth.extra.raw_info.education.last.school.name ? auth.extra.raw_info.education.last.school.name : ""
     unless user
       new_record = true
       user = User.create(provider:auth.provider,
@@ -35,7 +34,8 @@ class User < ActiveRecord::Base
                          name: auth.info.name,
                          password:Devise.friendly_token[0,20],
 #                         college:college_name,
-                         :image => auth.info.image
+                         :image => auth.info.image,
+                         :link => auth.extra.raw_info.link
                          )
     end
     [user, new_record]
@@ -68,5 +68,13 @@ class User < ActiveRecord::Base
         signins: user.signins
       }
     end
+  end
+
+  def self.fb_non_fb_users_data
+    fb_users = where('provider = ?', 'facebook')
+    non_fb_users = where(:provider => nil)
+    [ { label: "Facebook Registrations", value: fb_users.count },
+      { label: "Site Registrations", value: non_fb_users.count }
+    ]
   end
 end

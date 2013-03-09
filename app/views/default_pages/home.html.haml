@@ -1,3 +1,4 @@
+-provide(:title, "Avensis 2013")
 .row
   .center.head
     %h1 BrainStorm
@@ -8,23 +9,33 @@
       %h3#play
         =link_to "PLAY", play_path
     %hr
-
+  -if @level_attempts
+    .span8.offset4
+      .hide_div_toggle Hide/Show Level vs Attempts chart
+      =content_tag :div, "", id: "level_attempt_chart", data: { attempts: @level_attempts }
+      
   .span7
     %h2
       What is it?
     %p
-      BrainStorm is an online mind-boggling treasure hunt event to test your brain cells. 
+      <b>BrainStorm</b> is an online mind-boggling treasure hunt event to test your brain cells.
+      %br It is part of <a href="#">Avensis</a> TechFest.
     %h2
       How to play and compete?
     %p
-      Simply sign up using facebook intantly or register here.
+      Simply
+      =link_to "sign up using facebook", user_omniauth_authorize_path(:facebook)
+      instantly or
+      =link_to "register here.", register_path
   .span7
     %h2
       When?
     %p
       Go ahead and register now. BrainStorm will commence from
       %b 14 March - 21 March
+      %br Read <a href="/rules">rules and instructions</a>.
     %h2
       What's in it for me?
     %p
-      Prizes worth $$ to win. Experience with intellectual nervebreaking problems.      
+      Prizes worth $$ to win. Raise the flag of your intellectual superiority.
+

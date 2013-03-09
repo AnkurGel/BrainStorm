@@ -61,6 +61,18 @@ jQuery ->
    $("input[value='Update']").on 'click', (event) ->
      $("#user_college_id").val(selectedItem)
 
+    
+    
+  $('.hide_div_toggle').on 'click', (event) ->
+    $(this).next().fadeToggle()
+    
+  Morris.Bar
+    element: 'level_attempt_chart'
+    data: $("#level_attempt_chart").data('attempts')
+    xkey: 'level_id'
+    ykeys: ['top_user_attempts', 'second_user_attempts', 'third_user_attempts', 'current_user_attempts', 'total_attempts']
+    labels: ['Top ranker attempts', "2nd ranker's attempts", "3rd ranker's attempts", "Your attempts", 'Total attempts']
+    
   Morris.Line
     element: 'registration_chart'
     data: $("#registration_chart").data('registrations')
@@ -87,14 +99,7 @@ jQuery ->
     element: 'colleges_donut'
     data: $("#colleges_donut").data('colleges')
     ###formatter: (y, d) -> y + '%'###
-
-  Morris.Bar
-    element: 'level_attempt_chart'
-    data: $("#level_attempt_chart").data('attempts')
-    xkey: 'level_id'
-    ykeys: ['top_user_attempts', 'second_user_attempts', 'third_user_attempts', 'current_user_attempts', 'total_attempts']
-    labels: ['Top ranker attempts', "2nd ranker's attempts", "3rd ranker's attempts", "Your attempts", 'Total attempts']
     
-    
-  $('.hide_div_toggle').on 'click', (event) ->
-    $(this).next().fadeToggle()
+  Morris.Donut  
+    element: 'fb_non_fb_users_chart'
+    data: $("#fb_non_fb_users_chart").data('fb')

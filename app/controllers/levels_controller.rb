@@ -21,6 +21,7 @@ class LevelsController < ApplicationController
       flash[:success] = "Level created."
       redirect_to @level
     else
+      @college = College.new
       render 'default_pages/admin'
     end
   end

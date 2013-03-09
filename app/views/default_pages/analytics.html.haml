@@ -5,6 +5,8 @@
 =content_tag :div, "", id: "colleges_bar_chart", data: { colleges: @colleges }
 .hide_div_toggle Hide/Show colleges' participation% chart
 =content_tag :div, "", id: "colleges_donut", data: { colleges: donut_chart(@colleges) }
+.hide_div_toggle Hide/Show Facebook/Manual signups
+=content_tag :div, "", id: "fb_non_fb_users_chart", data: { fb: @fb_non_fb_users }
 .hide_div_toggle Hide/Show colleges' frequent sign-ins chart
 =content_tag :div, "", id: "colleges_signins"
 .hide_div_toggle Hide/Show Level vs Attempts chart
