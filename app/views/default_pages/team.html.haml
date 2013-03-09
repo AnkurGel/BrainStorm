@@ -1,11 +1,48 @@
 -provide(:title, "Super Team")
 %h1
   Team
-.row.team
+.row.team.offset1
   .span12
     =image_tag "ankur.jpg"
-    Ankur Goel
+    .content
+      %h1.name Ankur Goel
+      .description
+        Beauty doesn't lie in the eye of the beholder but in the hands of the ubercool sonovabitch who designs the inpenetrable application with a light-as-a-feather UI.
+      .links
+        %ul
+          %li=link_to "Facebook", "http://facebook.com/AnkurGel", :alt => 'Facebook profile'        
+          %li=link_to "Twitter", "http://twitter.com/AnkurGel", :alt => 'Twitter profile'
+          %li=mail_to "ankurgel@gmail.com", 'Mail'
   .span12
-    Ishan Gandhi
+    .content
+      %h1.name Ishan Gandhi
+      =image_tag "ishan.jpg"
+      .description
+        Ulysses was actually written by this guy, it somehow got stolen by a time travelling thief. Sue this guy if you suffer a mental breakdown during the hunt.
+      .links
+        %ul
+          %li=link_to "Facebook", "http://facebook.com/ishan070692", :alt => 'Facebook profile'
   .span12
-    Nitish Sharma
+    =image_tag "nitish.jpg"
+    .content
+      %h1.name Nitish Sharma
+      .description
+        The person you see in the block beside, is responsible for your hairloss.
+
+        In case, you want to beat him or something, contact him at nitishsharma1@gmail.com
+        %br
+        He can sometimes be found in CSE1 of 3rd year. <b><em>Sometimes</b></em>
+      .links
+        %ul
+          %li=link_to "Facebook", "http://facebook.com/nitish1sharma", :alt => 'Facebook profile'
+          %li=mail_to "sharma1nitish@gmail.com", 'Mail'
+  .span12
+    =image_tag "reema.jpg"
+    .content
+      %h1.name Reema Jain
+      .description
+        She is one enthusiastic girl and was a helping hand in publicity.
+        She is from CSE department, IInd year.
+      .links
+        %ul
+          %li=link_to "Facebook", "http://facebook.com/AnkurGel", :alt => 'Facebook profile'

@@ -11,4 +11,5 @@
 =content_tag :div, "", id: "colleges_signins"
 .hide_div_toggle Hide/Show Level vs Attempts chart
 =content_tag :div, "", id: "level_attempt_chart", data: { attempts: @level_attempts }
-
+Total Registrations:
+= User.count

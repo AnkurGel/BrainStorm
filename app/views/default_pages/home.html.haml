@@ -11,15 +11,9 @@
         - if current_user  
           %h3#play
             =link_to "PLAY", play_path
-      -if user_signed_in? 
-        %div
-          .display-image
-            -if current_user.provider and current_user.provider.eql?('facebook')
-              =image_for(current_user, 'float-right')
-            -else  
-              =image_for(current_user, 'float-right')
-              %br
-              %span.toggle-link=link_to "Change image", 'http://gravatar.com/email', :target => :blank  
+        %div{ :class => 'fb-like', :data => { :href => "http://bstorm.in", :send => "true", :width => "450", :show_faces => "true" } }
+      -if user_signed_in?
+        =render 'partial/display_image'
 
     %hr
   -if @level_attempts
@@ -50,5 +44,5 @@
     %h2
       What's in it for me?
     %p
-      Prizes worth $$ to win. Raise the flag of your intellectual superiority.
+      Cash prizes and goodies up for win. Raise the flag of your intellectual superiority.
 

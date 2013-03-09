@@ -1,0 +1,12 @@
+%div
+  .display-image
+    -if current_user.provider and current_user.provider.eql?('facebook')
+      =image_for(current_user, 'float-right')
+    -else
+      =image_for(current_user, 'float-right')
+
+      %br
+      %span.toggle-link=link_to "Change image", 'http://gravatar.com/email', :target => :blank
+    .score
+      Score
+      %span=current_user.score - 1

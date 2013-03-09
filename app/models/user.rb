@@ -52,7 +52,10 @@ class User < ActiveRecord::Base
   end
 
   def self.registration_data
-
+    registrations = select('DATE(created_at) date, count(id) as total_ids').group("DATE(created_at)")
+    registrations.map do |x|
+      { date: x.date, total_ids: x.total_ids }
+    end
   end
 
   def self.colleges_bar_chart_data

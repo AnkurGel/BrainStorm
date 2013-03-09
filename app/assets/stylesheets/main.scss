@@ -155,6 +155,9 @@ h2 {
     }
   }
 }
+.center.head .row .span12.offset2.question { h2 { color: #000;
+                                                  font-size: 2.5em;
+                                                } }
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -313,6 +316,15 @@ input:-webkit-input-placeholder {
   float: right;
   img {
     @include transition_mixin(all, 0.3s, ease-out, 0s);
+    margin-bottom: 3px;
+  }
+  .score {
+    font-size: 1.4em;
+    span {
+      font-family: 'Freckle Face', "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 1.6em;
+      color: forestgreen;
+    }
   }
   .toggle-link {
     display: none;
@@ -360,6 +372,64 @@ input:-webkit-input-placeholder {
     }
   }
 }
-.team .span12:nth-child(even) {
-  text-align: right;
+.team {
+  .name {
+    display: inline;
+  }
+  .span12 {
+    padding: 10px;
+    border-radius: 8px 8px;
+    margin-bottom: 5px;
+    @include transition_mixin(background-color, 0.8s, ease, 0s);
+    &:hover{
+      @include transition_mixin(background-color, 0.8s, ease, 0s);
+    }
+  }
+  img {
+    vertical-align: top;
+    border-radius: 13px 2px 13px 2px;
+  }
+  
+  .span12:nth-child(even) {
+    text-align: right;
+//    .content { margin-right: 20px; }
+    &:hover {
+      background-color: #eee;
+    }
+    img { float: right; margin-left: 20px; }
+  }
+  .span12:nth-child(odd){
+    &:hover {
+      background-color: #aaa;
+    }
+    img {
+      float: left;
+      margin-right: 20px;
+    }
+  }
+  
+  .content {
+    display: inline;
+    text-align: justify;
+    margin-left: 20px;
+    .name {
+      font-family: 'Freckle Face', "Helvetica Neue",Helvetica,Arial,sans-serif;
+      color: #aaa;
+      text-shadow: 2px 2px 1px #000;
+    }
+    .links {
+      ul { list-style: none;
+           li { display: inline-block; }
+         }
+      li:not(:last-child):after { content: " | "; }
+    }
+  }
+  .description {
+    margin-top: 7px;
+    font-size: 1.4em;
+    line-height: 1.5;
+  }
+}
+.table-striped tbody tr:nth-child(2n+1) td, .table-striped tbody tr:nth-child(2n+1) th {
+  background-color: #fff;
 }

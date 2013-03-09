@@ -7,7 +7,7 @@ class DefaultPagesController < ApplicationController
   end
 
   def fame
-    @users = User.order('score DESC, updated_at ASC').paginate(:page => params[:page], :per_page => 20)
+    @users = User.order('score DESC, updated_at ASC').paginate(:page => params[:page], :per_page => 40)
   end
 
   def admin
@@ -17,7 +17,9 @@ class DefaultPagesController < ApplicationController
   end
 
   def analytics
-    @registrations = User.select('DATE(created_at) created_at, count(id) as total_ids').group("DATE(created_at)")
+   # @registrations = User.select('DATE(created_at) created_at,
+    # count(id) as total_ids').group("DATE(created_at)")
+    @registrations = User.registration_data
     @colleges = User.colleges_bar_chart_data
     @users = User.order('score DESC')
     @level_attempts = Attempt.level_attempt_chart_data(current_user)

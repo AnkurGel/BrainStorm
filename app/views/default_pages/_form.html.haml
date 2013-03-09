@@ -6,15 +6,15 @@
     = render 'partial/error_messages', :object => f.object
 
     = f.label :question
-    = f.text_field :question
+    = f.text_field :question, :placeholder => "Write the question here.."
 
     = f.label :answer
-    = f.text_field :answer
+    = f.text_field :answer, :placeholder => "Answer goes here.. "
 
     .optional
       %span Add/Edit hint
       = f.label :hint
-      = f.text_field :hint
+      = f.text_field :hint, :placeholder => "Comma seperated hint(s).. "
     .optional
       %span Add alt text for image 
       = f.label :alt, "Hover text"
@@ -22,7 +22,7 @@
     .optional
       %span Add title to be shown on level page
       = f.label :title, "Optional title to be shown on that question's page"
-      = f.text_field :title
+      = f.text_field :title, :place => "Will be shown in title bar.."
 
     .optional
       %span Add link of Music file

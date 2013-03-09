@@ -76,9 +76,10 @@ jQuery ->
   Morris.Line
     element: 'registration_chart'
     data: $("#registration_chart").data('registrations')
-    xkey: 'created_at'
+    xkey: 'date'
     ykeys: ['total_ids']
     labels: ['registrations']
+    xLabels: ['day']
     
   Morris.Bar
     element: 'colleges_bar_chart'
