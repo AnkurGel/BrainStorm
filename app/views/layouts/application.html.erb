@@ -41,15 +41,15 @@
           user_omniauth_authorize_path(:facebook) %>
       <% else %>
       <%= current_user.name %>
-      <% if current_user.provider and current_user.provider.eql?('facebook') %>
-      <%= image_for(current_user, "float-right") %>
+      <!-- <% if current_user.provider and current_user.provider.eql?('facebook') %> -->
+      <!-- <%= image_for(current_user, "float-right") %> -->
       <% else %>
-      <div class="display-image">
-        <%= image_for(current_user, "float-right") %>
-        <br/>
-        <span class="toggle-link"><a href="http://gravatar.com/emails"
-        target="blank">Change image</a></span>
-      </div>
+      <!-- <div class="display-image"> -->
+      <!--   <%= image_for(current_user, "float-right") %> -->
+      <!--   <br/> -->
+      <!--   <span class="toggle-link"><a href="http://gravatar.com/emails" -->
+      <!--   target="blank">Change image</a></span> -->
+      <!-- </div> -->
 
         
       <% end %>

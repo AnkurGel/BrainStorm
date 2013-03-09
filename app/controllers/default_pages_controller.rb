@@ -38,8 +38,4 @@ class DefaultPagesController < ApplicationController
   def rules
   end
 
-  private
-  def admin_user
-    redirect_to root_path, notice: "sudo says: YOU SHALL NOT PASS!" unless current_user and current_user.admin?
-  end
 end

@@ -33,7 +33,7 @@ jQuery ->
     $(@).toggleClass 'display-image-toggle'
 
   $(".icon-info-sign").on 'click', (event) ->
-    $('.hint').fadeToggle()
+    $('.hint').toggleClass 'hint_toggle', 1000
 
   $(".optional > span").on 'click', (event) ->
     $(this).siblings().slideToggle()

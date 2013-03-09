@@ -13,7 +13,12 @@
           %td= index + 1
           - if current_user and current_user.admin?
             %td= user.email
-          %td= user.name
+            -if user.link and user.provider.eql? 'facebook'
+              %td= link_to user.name, user.link, :target => :blank
+            -else
+              %td= user.name
+          -else  
+            %td= user.name
           %td= user.college.name if user.college
           %td= user.score - 1
           -if current_user and current_user.admin?

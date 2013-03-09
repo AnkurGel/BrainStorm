@@ -20,7 +20,7 @@
         %i{ :class => "icon-info-sign" }
         - @level.hint.split(', ').each do |hint|  
           .hint=hint
-        %br  
+        %br
       =f.submit "Answer", :class => "btn btn-large btn-primary"
     -if @attempts and @attempts.any?
       ="#{pluralize(@attempts.count, "attempt")} so far:"

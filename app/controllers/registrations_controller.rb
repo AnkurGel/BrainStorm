@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  before_filter :admin_user, :only => [:destroy]
+  before_filter :update_only_before_play, :only => [:edit, :update]
   def update
     # required for settings form to submit when password is left blank
     if params[:user][:password].blank?
@@ -21,5 +23,12 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.find(params[:id])
     @user.destroy
     redirect_to fame_path
+  end
+
+  private
+  def update_only_before_play
+    redirect_to root_path, :notice => "You can't update your profile at this moment. Play now!" if current_user.score != 1
+    #To ensure that profile is not updated during game play,
+    #otherwise, this will impact the ranking of same rank holders
   end
 end
