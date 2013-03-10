@@ -213,6 +213,21 @@ input, textarea, select, .uneditable-input {
 input[value="Answer"] {
   margin-left: 32%;
 }
+.span8.offset4 {
+  ul {
+    margin: 3px 0;
+    list-style: none;
+    li {
+      background-color: darken(red, 10%);
+      border-radius: 7px;
+      box-shadow: 1px 0 1px lighten(red, 10%);
+      color: white;
+      display: inline;
+      margin: 3px;
+      padding: 3px 6px;
+     }
+  }
+}
 input {
   height: auto !important;
 }

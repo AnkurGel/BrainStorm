@@ -10,7 +10,10 @@
         %th #Score
       -@users.each_with_index do |user, index|
         %tr
-          %td= index + 1
+          - if @page
+            %td= (40 * @page.to_i) + index + 1
+          -else  
+            %td= index + 1
           - if current_user and current_user.admin?
             %td= user.email
             -if user.link and user.provider.eql? 'facebook'

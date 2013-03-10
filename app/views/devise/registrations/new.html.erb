@@ -17,9 +17,10 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
 
-    <%= f.label :college_name %>
+    <%= f.label :college_name, "College/Institute name" %>
     <%= f.text_field :college_id, :data => {:provide => "typeahead",
-    :menu => "#menu_list"}, :autocomplete => "off" %>
+    :menu => "#menu_list"}, :autocomplete => "off", :placeholder =>
+    "Start typing full name, then select from list" %>
     <%= f.submit "Sign Up", :class => "btn btn-large btn-primary" %>
     <% end %>
 
