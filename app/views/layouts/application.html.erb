@@ -47,8 +47,10 @@
     </header>
     <div class="container">
       <% unless user_signed_in? %>
-      <%= link_to "Sign in with facebook",
-          user_omniauth_authorize_path(:facebook), :class => "float-right" %>
+      <div id ="facebook-button">
+      <%= link_to image_tag("facebook-button.png"),
+          user_omniauth_authorize_path(:facebook) %>
+      </div>
       <% else %>
       <%= current_user.name %>
       <% end %>
