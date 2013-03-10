@@ -7,7 +7,7 @@ class DefaultPagesController < ApplicationController
   end
 
   def fame
-    @users = User.order('score DESC, updated_at ASC').paginate(:page => params[:page], :per_page => 4)
+    @users = User.order('score DESC, updated_at ASC').paginate(:page => params[:page], :per_page => 40)
     @page = params[:page].to_i - 1 if params[:page]
   end
 
