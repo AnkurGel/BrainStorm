@@ -21,6 +21,6 @@
             %td= user.name
           %td= user.college.name if user.college
           %td= user.score - 1
-          -if current_user and current_user.admin?
+          -if current_user and current_user.admin? and !user.admin?
             %td=link_to "Kick", user_destroy_path(user), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => 'btn-primary btn-inverse btn-small'
     = will_paginate @users
