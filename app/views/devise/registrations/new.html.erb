@@ -21,6 +21,8 @@
     <%= f.text_field :college_id, :data => {:provide => "typeahead",
     :menu => "#menu_list"}, :autocomplete => "off", :placeholder =>
     "Start typing full name, then select from list" %>
+
+    <%= show_simple_captcha %>
     <%= f.submit "Sign Up", :class => "btn btn-large btn-primary" %>
     <% end %>
 

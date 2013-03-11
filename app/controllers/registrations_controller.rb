@@ -1,6 +1,17 @@
 class RegistrationsController < Devise::RegistrationsController
   before_filter :admin_user, :only => [:destroy]
   before_filter :update_only_before_play, :only => [:edit, :update]
+
+  def create
+    if simple_captcha_valid?
+      super
+    else
+      build_resource
+      clean_up_passwords(resource)
+      flash.now[:alert] = "There was an error with the captcha code below. Please re-enter the code."      
+      render :new
+    end
+  end
   def update
     # required for settings form to submit when password is left blank
     if params[:user][:password].blank?

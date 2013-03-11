@@ -9,4 +9,10 @@ en:
     attributes:
       attempt:
         attempt: "A guess"
+  simple_captcha:
+    label: "Enter the code above"
+    message:
+      default: 'Secret code did not match with the Image'
+      user: "This secret image and code are different"
+  
       
