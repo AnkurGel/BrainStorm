@@ -6,10 +6,10 @@
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
     <%= devise_error_messages! %>
 
-    <%= f.label :college_name %>
+    <%= f.label :college_name, "College/Institute name" %>
     <%= f.text_field :college_id, :data => {:provide => "typeahead",
     :menu => "#menu_list"}, :autocomplete => "off" %>
-    <em>Select <strong>Other</strong> if not in list.<br/></em>
+    <em>Start typing full name of institution, choose <strong>Other</strong> if not in list.<br/></em>
     <%= f.submit "Update", :class => "btn btn-large btn-success " %>
     <% end %>
 

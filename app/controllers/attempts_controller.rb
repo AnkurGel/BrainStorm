@@ -8,11 +8,14 @@ class AttemptsController < ApplicationController
       if sterlize(@attempt.attempt).eql? @level.answer
         unless current_user.admin?
           current_user.score = @level.next_id;
+          current_user.last_correct_answer_at = Time.now
           current_user.save
         end
-        redirect_to level_path(current_level), :success => "WIN WIN"
+        flash[:success] = "Level cleared!"
+        redirect_to level_path(current_level)
       else
-        redirect_to level_path(current_level), :error => "NOOO"
+        flash[:error] = "Wrong! Needs more brainstorming"
+        redirect_to level_path(current_level)
       end
     else
       @attempts = Attempt.find_all_by_user_id_and_level_id(current_user.id, @level.id)

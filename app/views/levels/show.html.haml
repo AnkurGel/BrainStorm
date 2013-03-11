@@ -23,6 +23,7 @@
 
         - if @level.hint and !@level.hint.empty?
           %i{ :class => "icon-info-sign" }
+          %br  
           - @level.hint.split(', ').each do |hint|  
             .hint=hint
           %br

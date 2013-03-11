@@ -70,8 +70,8 @@ jQuery ->
     element: 'level_attempt_chart'
     data: $("#level_attempt_chart").data('attempts')
     xkey: 'level_id'
-    ykeys: ['top_user_attempts', 'second_user_attempts', 'third_user_attempts', 'current_user_attempts', 'total_attempts']
-    labels: ['Top ranker attempts', "2nd ranker's attempts", "3rd ranker's attempts", "Your attempts", 'Total attempts']
+    ykeys: ['top_user_attempts', 'second_user_attempts', 'third_user_attempts', 'current_user_attempts']
+    labels: ['Top ranker attempts', "2nd ranker's attempts", "3rd ranker's attempts", "Your attempts"]
     
   Morris.Line
     element: 'registration_chart'

@@ -21,6 +21,10 @@
   -o-transition: $property $duration $function $delay;
   transition: $property $duration $function $delay;
 }
+@font-face {
+  font-family: Castiglione;
+  src: url('https://dl.dropbox.com/u/102071534/castiglione.ttf');
+}
 body {
   background-color: lighten(#eee, 5%);
 }
@@ -210,11 +214,13 @@ input, textarea, select, .uneditable-input {
   text-align: center;
   margin-bottom: 20px;
 }
+// Attmept page - levelscontroller show
 input[value="Answer"] {
   margin-left: 32%;
 }
 .span8.offset4 {
-  ul {
+  .field_with_errors { display: inline; }
+  > ul:last-child {
     margin: 3px 0;
     list-style: none;
     li {
@@ -367,7 +373,7 @@ input:-webkit-input-placeholder {
 /*   border-collapse: inherit; */
 /* } */
 .frame {
-  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.7);
+
   border-bottom-right-radius: 20px;
 }
 .pagination {
