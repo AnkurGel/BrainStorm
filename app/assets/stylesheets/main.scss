@@ -134,8 +134,10 @@ h2 {
   h1 {
     font-family: 'Freckle Face', 'Quintessential', "Helvetica Neue", Helvetica,Arial, sans-serif, cursive;
     font-size: 6em;
-    color: #7d5015;
-    text-shadow: 4px 5px 3px darken(#ECE9EB, 20%), 5px 6px 2px #7d6015;
+//    color: #7d5015;
+    color:  #9B6013;
+    letter-spacing: 4px;
+    text-shadow: 2px 4px 2px  darken(#ECE9EB, 20%), 3px 5px 2px #7d6015, -1px -2px 1px #000;
   }
   h2 {
     color: forestgreen;
