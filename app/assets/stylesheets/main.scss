@@ -132,11 +132,10 @@ h2 {
 }
 .center.head {
   h1 {
-    font-family: 'Quintessential', "Helvetica Neue", Helvetica,Arial, sans-serif, cursive;
+    font-family: 'Freckle Face', 'Quintessential', "Helvetica Neue", Helvetica,Arial, sans-serif, cursive;
     font-size: 6em;
-    text-shadow: 5px 6px 3px #7d5015;
-    color: #240e03;
-    color: #ECE9E8
+    color: #7d5015;
+    text-shadow: 4px 5px 3px darken(#ECE9EB, 20%), 5px 6px 2px #7d6015;
   }
   h2 {
     color: forestgreen;

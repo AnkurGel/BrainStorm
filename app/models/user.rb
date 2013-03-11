@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  scope :with_rank, lambda { |rank| order('score DESC').offset(rank - 1).limit(1) }
+  scope :with_rank, lambda { |rank| order('score DESC, last_correct_answer_at ASC').offset(rank - 1).limit(1) }
   before_create :allot_score
   before_update :verify_college
   # And allot "Others" to college if blank or 0
