@@ -13,6 +13,9 @@ class ApplicationController < ActionController::Base
   def sterlize(value)
     value.chomp.downcase.gsub(/[\W\n\s]/,'')
   end
+  def insert_random_praise
+    ["Boo yeah", "Hell yeah", "Awesome", "Great"].shuffle.first
+  end
   helper_method :current_level
 
   def game_playable?

@@ -11,10 +11,10 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider,
-                  :uid, :name, :image, :college_id, :link
+                  :uid, :name, :image, :college_id, :link, :oauth_token, :oauth_expires_at
 
   # attr_accessible :title, :body
-  validates :name, :presence => true , :length => { :maximum => 25 },
+  validates :name, :presence => true , :length => { :maximum => 35 },
     :format => { :with => /^[A-Za-z ]+$/, :message => ": Err.. Your name should only contain alphabets, dear."}
 
 
@@ -25,22 +25,32 @@ class User < ActiveRecord::Base
   validates_associated :college
   def self.find_or_create(auth, signed_in_resource=nil)
     new_record = false
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    unless user
-      new_record = true
-      user = User.create(provider:auth.provider,
-                         uid:auth.uid,
-                         email:auth.info.email,
-                         name: auth.info.name,
-                         password:Devise.friendly_token[0,20],
-#                         college:college_name,
-                         :image => auth.info.image,
-                         :link => auth.extra.raw_info.link
-                         )
+
+    user = where(:provider => auth.provider, :uid => auth.uid)
+    new_record = true if user.empty?
+    debugger
+    new_user = where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.image = auth.info.image
+      user.link = auth.extra.raw_info.link
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.save!
     end
-    [user, new_record]
+    [new_user, new_record]
   end
 
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(oauth_token)
+  end
+
+  def has_publish_permission?
+    provider == "facebook" && facebook.get_connection("me", "permissions").first.has_key?("publish_stream")
+  end
   private
   def allot_score
     self.score = 1
