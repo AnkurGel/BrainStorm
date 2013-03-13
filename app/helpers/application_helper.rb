@@ -3,6 +3,13 @@ module ApplicationHelper
     "active" if params[param].eql? value
   end
 
+  def if_this_is_you(user)
+    if current_user and current_user.eql?(user)
+      "highlight_user"
+    else
+      ""
+    end
+  end
   def insert_title(title)
     base_title = "BrainStorm"
     if title.empty?

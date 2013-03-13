@@ -9,7 +9,7 @@
         %th College
         %th #Score
       -@users.each_with_index do |user, index|
-        %tr
+        %tr{ :class => if_this_is_you(user) }
           - if @page
             %td= (40 * @page.to_i) + index + 1
           -else  

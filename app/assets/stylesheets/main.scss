@@ -339,7 +339,7 @@ input:-webkit-input-placeholder {
     font-size: 1.4em;
     span {
       font-family: 'Wellfleet', 'Freckle Face', "Helvetica Neue",Helvetica,Arial,sans-serif;
-      font-size: 1.6em;
+      font-size: 1.2em;
       color: forestgreen;
     }
   }
@@ -371,6 +371,11 @@ input:-webkit-input-placeholder {
 .frame {
 
   border-bottom-right-radius: 20px;
+}
+.highlight_user > td{
+  background-color: forestgreen !important;
+  color: white !important;
+  font-weight: bolder;
 }
 .pagination {
   text-align: center;
@@ -453,4 +458,7 @@ input:-webkit-input-placeholder {
 #facebook-button {
   display: block;
   text-align: right;
+}
+li.active > a {
+  background-color: #c3c3c3 !important;
 }

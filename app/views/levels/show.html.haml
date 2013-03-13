@@ -12,6 +12,8 @@
             - @level.images.each do |image|
               /=image_tag image.image_url, :alt => @level.alt
               =image_tag image.image, :alt => @level.alt
+        -if @level.extra_content and !@level.extra_content.blank?
+          =raw @level.extra_content
       =render 'partial/display_image'
 
 -unless current_user.admin?
