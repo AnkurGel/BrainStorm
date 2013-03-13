@@ -1,0 +1,12 @@
+%h1
+  = @user.name
+.row
+  .span11.offset2
+    %table.table.table-striped.frame
+      %thead
+        %th Attempt
+        %th Level
+      -@attempts.each do |attempt|
+        %tr
+          %td=attempt.attempt
+          %td=attempt.level_id

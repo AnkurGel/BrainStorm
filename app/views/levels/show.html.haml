@@ -32,6 +32,7 @@
         =f.submit "Answer", :class => "btn btn-large btn-primary"
       -if @attempts and @attempts.any?
         ="#{pluralize(@attempts.count, "attempt")} so far:"
+        %br
         %ul
           -@attempts.count.times do |n|
             %li=@attempts[n].attempt

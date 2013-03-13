@@ -28,6 +28,6 @@ class Attempt < ActiveRecord::Base
         third_user_attempts: third_user.where('level_id = ?', la.level_id).first.try(:total_attempts) || 0,
         current_user_attempts: current_user_attempts.where('level_id = ?', la.level_id).first.try(:total_attempts) || 0
       }
-    end
+    end.sort_by { |x| x[:level_id] }
   end
 end
