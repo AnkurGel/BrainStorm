@@ -2,7 +2,7 @@ class Level < ActiveRecord::Base
   attr_accessible :answer, :next_id, :prev_id, :question, :images_attributes, :hint, :alt, :title, :extra_content
   before_save :sterlize_answer
 
-  validates :answer, :presence => true, :length => { :maximum => 20 }
+  validates :answer, :presence => true, :length => { :maximum => 70 }
 
   has_many :images, :dependent => :destroy
   has_many :attempts
