@@ -58,18 +58,18 @@ class LevelsController < ApplicationController
         @next_level.update_attributes(:prev_id => nil) if @next_level and !@next_level.nil?
       end
     else
-      redirect_to root_path, :error => "Some wild condition encountered, contact admin asap!" 
+      redirect_to home_path, :error => "Some wild condition encountered, contact admin asap!" 
     end
     redirect_to admin_path
   end
 
   private
   def admin_user
-    redirect_to root_path, notice: "sudo says: YOU SHALL NOT PASS!" unless current_user and current_user.admin?
+    redirect_to home_path, notice: "sudo says: YOU SHALL NOT PASS!" unless current_user and current_user.admin?
   end
 
   def registered_user
-    redirect_to root_path, notice: "Register or Sign in to play." unless current_user
+    redirect_to home_path, notice: "Register or Sign in to play." unless current_user
     if current_user and not current_user.admin?
       params[:redirect_to_correct_location] = true if params[:id].to_i != current_user.score
       params[:id] = current_user.score

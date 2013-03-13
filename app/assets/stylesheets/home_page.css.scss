@@ -1,0 +1,57 @@
+// Place all the styles related to the HomePage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-color: #1e1e1e;
+}
+div#left_dial, div#right_dial {
+  width: 49%;
+  height: 516px;
+  border-box: border
+}
+div#left_dial {
+  float: left;
+  img {
+    position: absolute;
+    top: 125px;
+    left: 250px;
+    cursor: pointer;
+  }
+}
+#right_dial {
+  float: right;
+}
+#wave_left {
+  position: absolute;
+  top: 155px;
+  left: 710px;
+  z-index:1000;
+}
+#wave_right {
+  position: absolute;
+  top: 155px;
+  left: 1030px;
+  z-index:1000;
+}
+#skull {
+  position: absolute;
+  top: -70px;
+}
+#headline {
+  text-align: center;
+}
+.rotate {
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+
+  -moz-transition: all 2s;
+  -webkit-transition: all 2s;
+  -o-transition: all 2s;
+  transition: all 2s;
+}

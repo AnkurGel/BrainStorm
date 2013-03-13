@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta name="description" content="BrainStorm 2013 - Online treasure hunt event! Claim prizes at stake">
-    <link href='http://fonts.googleapis.com/css?family=Quintessential|Freckle+Face' rel='stylesheet' type='text/css'>
+
+    <link href='http://fonts.googleapis.com/css?family=Wellfleet|Freckle+Face' rel='stylesheet' type='text/css'>    
     <title><%= insert_title(yield(:title)) %></title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
@@ -25,7 +26,7 @@
           <%= link_to "BrainStorm", root_path, id: 'logo' %>
           <nav>
             <ul class = "nav nav-pills pull-right">
-              <li class="<%= 'active' if params['action'].eql?('home') %>"><%= link_to "Home", root_path %></li>
+              <li class="<%= 'active' if params['action'].eql?('home') %>"><%= link_to "Home", home_path %></li>
               <li class="<%= alert_active('action', 'fame') %>"><%= link_to "LeaderBoard", fame_path %></li>
               <li class="<%= alert_active('action', 'rules') %>"><%= link_to "Rules", rules_path %></li>
               <% if current_user and current_user.admin? %>

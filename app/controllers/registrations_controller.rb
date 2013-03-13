@@ -38,7 +38,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   private
   def update_only_before_play
-    redirect_to root_path, :notice => "You can't update your profile at this moment. Play now!" if current_user.score != 1
+    redirect_to home_path, :notice => "You can't update your profile at this moment. Play now!" if current_user.score != 1
     #To ensure that profile is not updated during game play,
     #otherwise, this will impact the ranking of same rank holders
   end

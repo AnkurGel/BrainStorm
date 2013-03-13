@@ -9,7 +9,9 @@ Brainstorm::Application.routes.draw do
   resources :attempts, :only => [:create]
   resources :colleges, :only => [:create]
 
-  root to: 'default_pages#home'
+  #root to: 'default_pages#home'
+  root to: 'home_page#index'
+  match '/home', :to => 'default_pages#home', :as => 'home'
   match '/leaderboard', :to => 'default_pages#fame', :as => 'fame'
   match '/admin',       :to => 'default_pages#admin'
   match '/analytics',   :to => 'default_pages#analytics'

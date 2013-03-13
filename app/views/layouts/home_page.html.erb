@@ -1,0 +1,24 @@
+<!DOCTYPE  html>
+<html>
+  <head>
+    <meta name="description" content="BrainStorm 2013 - Online treasure hunt event! Claim prizes at stake">
+    <%= stylesheet_link_tag "home_page" %>
+    <%= javascript_include_tag "home_page" %>
+  </head>
+  <body>
+    <div id="left_dial">
+      <img src="bs_dial.jpg">
+    </div>
+    <div id="right_dial">
+      <img src="bs_23.jpg" id="skull">
+      <img src="bs_21.jpg" id="wave_left">
+      <img src="bs_22.jpg" id="wave_right">
+    </div>
+    <%= hidden_field_tag home_path %>
+    <div id="headline">
+      <img src="tagline.png"/>
+    </div>
+    <script src="jquery.js"></script>
+    <script src="my_script.js"></script>
+</body>
+</html>

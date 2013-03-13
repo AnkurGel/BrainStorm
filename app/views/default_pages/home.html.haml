@@ -3,14 +3,10 @@
   .center.head
     .row
       .span12.offset2
-        %h1 BrainStorm
-
-        %h2
-          14 - 21 March 2013
-
+        =image_tag "bs_l2.png"
         - if current_user  
           %h3#play
-            =link_to "PLAY", play_path
+            =link_to "ENTER", play_path
         %div{ :class => 'fb-like', :data => { :href => "http://www.facebook.com/pages/Brainstorm-Avensis-2013/135456353292529", :send => "true", :width => "450", :show_faces => "true" } }
       -if user_signed_in?
         =render 'partial/display_image'

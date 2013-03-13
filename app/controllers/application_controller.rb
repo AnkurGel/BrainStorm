@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include SimpleCaptcha::ControllerHelpers
   def admin_user
-    redirect_to root_path, notice: "sudo says: YOU SHALL NOT PASS!" unless current_user and current_user.admin?
+    redirect_to home_path, notice: "sudo says: YOU SHALL NOT PASS!" unless current_user and current_user.admin?
   end
 
   def current_level
@@ -21,7 +21,10 @@ class ApplicationController < ActionController::Base
   def game_playable?
     if (Game.first and Game.first.is_playable) or current_user.admin?
     else
-      redirect_to root_path, :notice => "Brainstorm is not yet playable"
+      redirect_to home_path, :notice => "Brainstorm is not yet playable"
     end
+  end
+  def after_sign_in_path_for(resource)
+    request.env['omniauth.origin'] || stored_location_for(resource) || home_path
   end
 end

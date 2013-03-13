@@ -21,12 +21,8 @@
   -o-transition: $property $duration $function $delay;
   transition: $property $duration $function $delay;
 }
-@font-face {
-  font-family: Castiglione;
-  src: url('https://dl.dropbox.com/u/102071534/castiglione.ttf');
-}
 body {
-  background-color: lighten(#eee, 5%);
+  background-color: #C3C3C3;
 }
 
 html {
@@ -48,8 +44,8 @@ textarea {
 .container { width: 1170px; }
 
 .navbar-inner {
-  @include bg_linear_gradient((top, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.18)), "background.jpg"); 
-  background-position: 10% 1%;
+  background-color: #1e1e1e;
+  @include two_color_linear_gradient(top, #1e1e1e 68%, #000);
   .container { width: 1170px !important; }
 }
 .navbar .nav.pull-right {
@@ -62,7 +58,9 @@ textarea {
   letter-spacing: -1px;
   font-weight: bold;
   margin-right: 10px;
-  font-family: 'Freckle Face', "Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin-top: 2px;
+  color: #c3c3c3;
+  font-family: 'Wellfleet', "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 2em;
   text-transform: uppercase;
   @include transition_mixin(all, 1s, linear, 0.5s);
@@ -74,7 +72,8 @@ textarea {
 }
 
 .navbar .nav > li > a {
-  color: #fff;
+  font-family: "Wellfleet";
+  color: #c3c3c3;
   border-bottom: solid 3px #000;
   @include transition_mixin(all, 2s, ease, 0s);
   &:hover {
@@ -109,6 +108,9 @@ footer {
 .center {
   text-align: center;
 }
+h1 {
+  font-family: "Wellfleet", "Helvetica";
+}
 .center h1 {
   margin-bottom: 10px;
 }
@@ -131,23 +133,11 @@ h2 {
   color: #999;
 }
 .center.head {
-  h1 {
-    font-family: 'Freckle Face', 'Quintessential', "Helvetica Neue", Helvetica,Arial, sans-serif, cursive;
-    font-size: 6em;
-//    color: #7d5015;
-    color:  #9B6013;
-    letter-spacing: 4px;
-    text-shadow: 2px 4px 2px  darken(#ECE9EB, 20%), 3px 5px 2px #7d6015, -1px -2px 1px #000;
-  }
-  h2 {
-    color: forestgreen;
-    text-shadow: 0 1px #777, 0 -1px 0 green;
-    letter-spacing: 1px;
-  }
 
   ~ .span7 {
     text-align: justify;
     h2 {
+      font-family: "Wellfleet", "Helvetica";
       color: rgba(255, 255, 255, 0.7);
       font-weight: bold;
       text-align: left;
@@ -155,7 +145,8 @@ h2 {
       -moz-border-radius: 6px;
       border-radius: 6px;
       padding: 7px;
-      background-image: url('background.jpg');
+      background-color: #1e1e1e;
+      @include two_color_linear_gradient(top, #1e1e1e 68%, #000);
       + p { margin-bottom: 30px; }
     }
   }
@@ -276,6 +267,9 @@ a.add_fields {
 }
 .active {
   font-weight: bolder;
+  > a {
+    background-color: #c3c3c3;
+  }
 }
 
 @media only screen and (max-width: 959px) {
@@ -302,6 +296,7 @@ a.add_fields {
 }
 h3#play a {
   font-size: 32px;
+  font-family: "Wellfleet", "Helvetica";
   /* @include transition_mixin(all, 0.5s, ease-out,0s); */
   /* &:hover{ */
   /*   color: #000; */
@@ -343,7 +338,7 @@ input:-webkit-input-placeholder {
   .score {
     font-size: 1.4em;
     span {
-      font-family: 'Freckle Face', "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-family: 'Wellfleet', 'Freckle Face', "Helvetica Neue",Helvetica,Arial,sans-serif;
       font-size: 1.6em;
       color: forestgreen;
     }
@@ -435,7 +430,7 @@ input:-webkit-input-placeholder {
     text-align: justify;
     margin-left: 20px;
     .name {
-      font-family: 'Freckle Face', "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-family: 'Wellfleet', 'Freckle Face', "Helvetica Neue",Helvetica,Arial,sans-serif;
       color: #aaa;
       text-shadow: 2px 2px 1px #000;
     }
