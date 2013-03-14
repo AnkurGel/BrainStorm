@@ -39,7 +39,8 @@ class DefaultPagesController < ApplicationController
 
   def view_attempts
     @user = User.find(params[:id])
-    @attempts = @user.attempts.order(:level_id)
+    @attempts_count = @user.attempts.count
+    @attempts = @user.attempts.order('level_id ASC, created_at ASC').paginate(:page => params[:page], :per_page => 100)
   end
 
   def rules

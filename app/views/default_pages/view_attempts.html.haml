@@ -6,7 +6,13 @@
       %thead
         %th Attempt
         %th Level
+        %th At time
       -@attempts.each do |attempt|
         %tr
           %td=attempt.attempt
           %td=attempt.level_id
+          %td=attempt.created_at.in_time_zone
+          %td=time_ago_in_words(attempt.created_at.in_time_zone)
+  =will_paginate @attempts
+Total attempts by this user so far:
+=@attempts_count
