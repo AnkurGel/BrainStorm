@@ -30,4 +30,13 @@ class Attempt < ActiveRecord::Base
       }
     end.sort_by { |x| x[:level_id] }
   end
+
+  def self.attempts_per_level_data
+    select('count(id) as total, level_id as label').group(:level_id).map do |record|
+      {
+        label: record.label,
+        value: record.total
+      }
+    end.sort_by { |x| x[:label] }
+  end
 end

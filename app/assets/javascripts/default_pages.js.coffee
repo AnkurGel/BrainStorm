@@ -101,6 +101,19 @@ jQuery ->
     data: $("#colleges_donut").data('colleges')
     ###formatter: (y, d) -> y + '%'###
     
+  Morris.Donut
+    element: 'attempts_per_level_chart'
+    data: $("#attempts_per_level_chart").data('attempts')
+    formatter: (y,d) -> ["Attempts: " + y]
+    
+  Morris.Bar
+    element: 'attempts_per_level_line_chart'
+    data: $("#attempts_per_level_chart").data("attempts")
+    xkey: 'label'
+    ykeys: ['value']
+    labels: ['Attempts']
+    barColors: ['#1e1e1e']
+    
   Morris.Donut  
     element: 'fb_non_fb_users_chart'
     data: $("#fb_non_fb_users_chart").data('fb')

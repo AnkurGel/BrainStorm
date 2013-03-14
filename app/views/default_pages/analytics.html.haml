@@ -11,6 +11,10 @@
 =content_tag :div, "", id: "colleges_signins"
 .hide_div_toggle Hide/Show Level vs Attempts chart
 =content_tag :div, "", id: "level_attempt_chart", data: { attempts: @level_attempts }
+.hide_div_toggle Hide/Show Attempts per level pie
+=content_tag :div, "", id: "attempts_per_level_chart", data: { attempts: @attempts_per_level }
+.hide_div_toggle Hide/Show Attempts per level pie
+=content_tag :div, "", id: "attempts_per_level_line_chart"
 Total Registrations:
 = User.count
 Total attempts made so far:

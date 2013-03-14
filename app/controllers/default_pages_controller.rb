@@ -25,6 +25,7 @@ class DefaultPagesController < ApplicationController
     @users = User.order('score DESC')
     @level_attempts = Attempt.level_attempt_chart_data(current_user)
     @fb_non_fb_users = User.fb_non_fb_users_data
+    @attempts_per_level = Attempt.attempts_per_level_data
   end
 
   def contact
