@@ -37,6 +37,6 @@ class Attempt < ActiveRecord::Base
         label: record.label,
         value: record.total
       }
-    end.sort_by { |x| x[:label] }
+    end.sort_by { |x| x[:label].to_i }
   end
 end
