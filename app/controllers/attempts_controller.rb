@@ -10,14 +10,14 @@ class AttemptsController < ApplicationController
           current_user.score = @level.next_id;
           current_user.last_correct_answer_at = Time.now
           current_user.save
-          # if current_user.has_publish_permission?
-          #   begin
-          #     current_user.facebook.put_wall_post("Just cleared level #{@level.id} in BrainStorm - online treasure hunt. #{insert_random_praise}! - http://bstorm.in")
-          #   rescue Koala::Facebook::APIError => e
-          #     flash[:success] = "Level cleared!"
-          #     redirect_to level_path(current_level)
-          #   end
-          # end
+          if current_user.has_publish_permission?
+            begin
+              current_user.facebook.put_wall_post("Just cleared level #{@level.id} in BrainStorm - online treasure hunt. #{insert_random_praise}! - http://bstorm.in")
+            rescue Koala::Facebook::APIError => e
+              flash[:success] = "Level cleared!"
+              redirect_to level_path(current_level)
+            end
+          end
         end
         flash[:success] = "Level cleared!"
         redirect_to level_path(current_level)
