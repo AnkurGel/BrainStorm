@@ -47,7 +47,7 @@ class DefaultPagesController < ApplicationController
   def observe
     @user = User.find_by_id(params[:observe][:id])
     if @user and (@user.score != 1)
-      @user_attempts_per_level = @user.attempts.select("count(id) as max_attempts, level_id").group(:level_id)
+      @user_attempts_per_level = @user.attempts.select("count(id) as max_attempts, level_id").group(:level_id).order('level_id')
       @user_attempts_timeline = @user.attempts.select('max(created_at) as created_at, level_id').group(:level_id)
     end
   end
