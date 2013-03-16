@@ -22,6 +22,7 @@ Brainstorm::Application.routes.draw do
   match '/play',        :to => 'levels#play', :as => 'play'
   match '/user/:id',    :to => 'default_pages#view_attempts', :as => 'view_attempts'
   match '/observe', :to => 'default_pages#observe', :as => 'observe'
+  match '/observe/:id', :to => 'default_pages#observe', :as => 'observe_get'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

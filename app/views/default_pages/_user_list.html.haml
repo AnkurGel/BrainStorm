@@ -27,5 +27,6 @@
           -if current_user and current_user.admin? and !user.admin?
             %td=link_to "Kick", user_destroy_path(user), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => 'btn-primary btn-inverse btn-small'
             %td=link_to "View", view_attempts_path(user)
+            %td=link_to "|Analyze", observe_get_path(user)
     = will_paginate @users
     

@@ -1,5 +1,5 @@
 class DefaultPagesController < ApplicationController
-  before_filter :admin_user, :only => [:admin, :analytics, :edit_question, :admin_user_list, :view_attempts]
+  before_filter :admin_user, :only => [:admin, :analytics, :edit_question, :admin_user_list, :view_attempts, :observe]
   def home
     if Game.first and Game.first.is_playable? and user_signed_in?
       @level_attempts = Attempt.level_attempt_chart_data(current_user)
@@ -45,7 +45,12 @@ class DefaultPagesController < ApplicationController
   end
 
   def observe
-    @user = User.find_by_id(params[:observe][:id])
+    if params[:observe] and params[:observe][:id]
+      id = params[:observe][:id]
+    else
+      id = params[:id]
+    end
+    @user = User.find_by_id(id)
     if @user and (@user.score != 1)
       @user_attempts_per_level = @user.attempts.select("count(id) as max_attempts, level_id").group(:level_id).order('level_id')
       @user_attempts_timeline = @user.attempts.select('max(created_at) as created_at, level_id').group(:level_id)
