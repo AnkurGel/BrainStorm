@@ -65,7 +65,21 @@ jQuery ->
     
   $('.hide_div_toggle').on 'click', (event) ->
     $(this).next().fadeToggle()
-    
+
+  if($("#user_observe_chart").size() == 1)
+    Morris.Bar
+      element: 'user_observe_chart'
+      data: $("#user_observe_chart").data("attempts")
+      xkey: 'level_id'
+      ykeys: ['max_attempts']
+      labels: ['Attempts']
+
+    Morris.Line
+      element: 'user_attempts_timeline_chart'
+      data: $("#user_attempts_timeline_chart").data("user-attempts-timeline")
+      xkey: 'created_at'
+      ykeys: ['level_id']
+      labels: ['Level']
   Morris.Bar
     element: 'level_attempt_chart'
     data: $("#level_attempt_chart").data('attempts')

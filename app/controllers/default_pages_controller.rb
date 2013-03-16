@@ -44,6 +44,14 @@ class DefaultPagesController < ApplicationController
     @attempts = @user.attempts.order('level_id ASC, created_at ASC').paginate(:page => params[:page], :per_page => 100)
   end
 
+  def observe
+    @user = User.find_by_id(params[:observe][:id])
+    if @user and (@user.score != 1)
+      @user_attempts_per_level = @user.attempts.select("count(id) as max_attempts, level_id").group(:level_id)
+      @user_attempts_timeline = @user.attempts.select('max(created_at) as created_at, level_id').group(:level_id)
+    end
+  end
+
   def rules
   end
 

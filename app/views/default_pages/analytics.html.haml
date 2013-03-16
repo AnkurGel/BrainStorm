@@ -19,3 +19,10 @@ Total Registrations:
 = User.count
 Total attempts made so far:
 = Attempt.count
+
+.row
+  .span6.offset4
+    =form_for(:observe, :url => observe_path) do |f|
+      =f.label :id, "Enter User ID"
+      =f.text_field :id, :placeholder => "Click on view from leaderboard against user and note it's id"
+      =f.submit "Observe"

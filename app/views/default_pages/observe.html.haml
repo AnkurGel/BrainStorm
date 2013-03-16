@@ -1,0 +1,4 @@
+-provide(:title, "Observing #{@user.try(:name) || "- No such user"}")
+%h1="#{@user.try(:name) || "No such user"}"
+=content_tag :div, "", id: "user_observe_chart", data: { attempts: @user_attempts_per_level }
+=content_tag :div, "", id: "user_attempts_timeline_chart", data: { user_attempts_timeline: @user_attempts_timeline }
