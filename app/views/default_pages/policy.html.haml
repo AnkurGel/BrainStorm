@@ -1,0 +1,12 @@
+-provide(:title, "Privacy Policy")
+%h1
+  Privacy Policy
+.row.rules
+  .span13.clear
+    %ul
+      %li
+        Data is collected using Facebook Developer API.
+      %li We are storing information like user name, email(using <i>email</i> permission) and image url for functionality of the application.
+      %li Email IDs collected by the application is not viewable to anyone. It is only available for internal assessment by developer.
+      %li Email IDs will not be disclosed to any 3rd party service under any circumstance.
+      %li We are using <i>publish_stream</i> permission to publish status on user wall when any level is cleared in application. This is an optional step for user and user is given an apt explaination before giving the permission - <b>"Allows BrainStorm to share when you clear the levels successfully through the storm."</b>.<br/> For this purpose, we are systematically saving <i>oauth_token</i> and the time when it expires.

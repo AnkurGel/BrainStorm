@@ -60,4 +60,7 @@ class DefaultPagesController < ApplicationController
   def rules
   end
 
+  def policy
+  end
+
 end

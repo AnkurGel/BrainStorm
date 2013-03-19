@@ -18,6 +18,7 @@ Brainstorm::Application.routes.draw do
   match '/contact',     :to => 'default_pages#contact'
   match '/team',        :to => 'default_pages#team'
   match '/rules',       :to => 'default_pages#rules'
+  match '/policy',      :to => 'default_pages#policy'
   match '/levels/:id/edit', :to => 'default_pages#edit_question', :as => 'edit_level'
   match '/play',        :to => 'levels#play', :as => 'play'
   match '/user/:id',    :to => 'default_pages#view_attempts', :as => 'view_attempts'
