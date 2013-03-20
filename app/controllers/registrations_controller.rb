@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   before_filter :admin_user, :only => [:destroy]
   before_filter :update_only_before_play, :only => [:edit, :update]
+  before_filter :admin_user, :only => [:create, :new]
 
   def create
     if simple_captcha_valid?

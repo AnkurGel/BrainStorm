@@ -40,6 +40,12 @@ class User < ActiveRecord::Base
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
+    #blocking_registrations
+    if new_record
+      user.first.destroy
+      new_user = User.new
+    end
+    #block_code end
     [new_user, new_record]
   end
 
