@@ -41,10 +41,10 @@ class User < ActiveRecord::Base
       user.save!
     end
     #blocking_registrations
-    if new_record
-      user.first.destroy
-      new_user = User.new
-    end
+    #if new_record
+    #  user.first.destroy
+    #  new_user = User.new
+    #end
     #block_code end
     [new_user, new_record]
   end
