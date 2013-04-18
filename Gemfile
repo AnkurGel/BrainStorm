@@ -19,6 +19,7 @@ group :development, :test do
   gem 'guard-rspec', '1.2.1'
   gem 'guard-spork', '1.2.0'
   gem 'spork', '0.9.2'
+  gem 'faker', '1.0.1'
   gem 'pry-rails', :group => :development
 end
 
