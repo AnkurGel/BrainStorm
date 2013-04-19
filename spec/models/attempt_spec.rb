@@ -9,6 +9,9 @@ describe Attempt do
     @attempt = Attempt.new(:attempt => 'foo', :user_id => @user_1, :level_id => @level_1)
   end
 
+  it { should respond_to(:attempt) }
+  it { should respond_to(:user) }
+  it { should respond_to(:level) }
   describe "should contain string value" do
     before { @attempt.attempt = 'foo' }
     subject { @attempt }

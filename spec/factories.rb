@@ -9,6 +9,7 @@ FactoryGirl.define do
 #    association :college, factory: :college, strategy: :build
 
     factory :admin do
+      name "Super Ninja"
       email "admin@bstorm.in"
       admin true
     end
@@ -38,11 +39,13 @@ FactoryGirl.define do
     next_id nil
   end
 
-  # factory :attempt do
-  #   attempt { generate(:random_text) }
-  #   association :level, factory: [:level_1, :level_2].shuffle.first
-  #   association :user,  factory: [:user, :second_user].shuffle.first
-  # end
+  factory :attempt, class: Attempt do
+    sequence(:attempt) { |n| "Text_#{n}" }
+#    attempt { FactoryGirl.generate(:increment) }#Faker::Lorem.characters(20)
+#    attempt { generate(:random_text) }
+    association :level, factory: :level_1
+    association :user,  factory: [:user, :second_user].shuffle.first
+  end
 
   factory :college do
     name  "Indraprastha University"

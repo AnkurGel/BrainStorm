@@ -1,6 +1,7 @@
 require 'spec_helper'
-
+require 'ruby-debug'
 describe "Authorization" do
+  before(:all) { User.destroy_all }
   subject { page }
   let(:admin) { FactoryGirl.create(:admin) }
   let(:user) { FactoryGirl.create(:user) }
@@ -80,7 +81,10 @@ describe "Authorization" do
       end
       describe "and visits leaderboard page" do
         #let is lazy, user won't be present here anymore.
-        before { @user = FactoryGirl.create(:user); visit fame_path }
+        before do
+#          @user = FactoryGirl.create(:user) unless user
+          visit fame_path
+        end
         it { should have_selector('title',  :text => complete_title('LeaderBoard')) }
         it { should have_selector('h1',     :text => 'LeaderBoard') }
         it { should have_selector('th', :text => 'User') }

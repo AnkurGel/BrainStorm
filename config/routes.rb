@@ -1,5 +1,6 @@
 Brainstorm::Application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" } do
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+  devise_scope :user do
     get '/login', :to => "devise/sessions#new"
     get '/register', :to => "devise/registrations#new"
     match '/destroy/:id',  :to => 'registrations#destroy', :via => :delete, :as => 'user_destroy'
