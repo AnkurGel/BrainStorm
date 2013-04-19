@@ -68,7 +68,6 @@ describe DefaultPagesController do
         @admin = FactoryGirl.create(:admin)
         sign_in(@admin)
       end
-      after { User.destroy_all }
       it "should render analytics page" do
         get :analytics
         should render_template :analytics
@@ -119,7 +118,6 @@ describe DefaultPagesController do
         sign_in(@admin)
         get :admin
       end
-      after(:each) { User.destroy_all }
       it { should render_template :admin }
       it "should assign a new level to @level" do
         expect(assigns(:level)).to be_a_new Level
@@ -138,28 +136,28 @@ describe DefaultPagesController do
         sign_in(@user)
         get :admin
       end
-      after { User.destroy_all }
       it { should redirect_to :home }
     end
   end
 
   describe "GET #view_attempts" do
+    before(:all) do
+      @user = FactoryGirl.create(:user)
+      @admin = FactoryGirl.create(:admin)
+    end
     it "should redirect to #home if not signed in" do
       get :view_attempts, id: 1
       expect(response).to redirect_to :home
     end
 
     it "should redirect to #home if signed in as general user" do
-      user = FactoryGirl.create(:user)
-      sign_in(user)
+      sign_in(@user)
       get :view_attempts, id: 1
       expect(response).to redirect_to :home
     end
 
     it "should render :view_attempts page if signed in as admin" do
-      FactoryGirl.create(:user)
-      admin = FactoryGirl.create(:admin)
-      sign_in(:admin)
+      sign_in(@admin)
       get :view_attempts, id: 1
       expect(response).to render :view_attempts
     end
