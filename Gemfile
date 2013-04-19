@@ -11,6 +11,7 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'galetahub-simple_captcha', :require => 'simple_captcha'
 gem 'koala'
+gem 'database_cleaner'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
